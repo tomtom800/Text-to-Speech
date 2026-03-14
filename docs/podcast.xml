@@ -5,12 +5,30 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Mar 2026 17:28:19 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 17:43:23 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>One Owl's Second Chance (Part 1)</title>
+      <description>https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze</description>
+      <guid>reader-01khyhfps06fn30f1fjhq24cze-f17b9d88-part-1</guid>
+      <pubDate>Sat, 14 Mar 2026 17:35:25 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p01.mp3" length="1030752" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>One Owl's Second Chance (Part 2)</title>
+      <description>https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze</description>
+      <guid>reader-01khyhfps06fn30f1fjhq24cze-f17b9d88-part-2</guid>
+      <pubDate>Sat, 14 Mar 2026 17:35:25 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p02.mp3" length="467712" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 1)</title>
       <description>https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9</description>
