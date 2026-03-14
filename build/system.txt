@@ -1,0 +1,8 @@
+2026-03-14T10:18:20.3900000Z Evaluating build.if
+2026-03-14T10:18:20.3900000Z Evaluating: success()
+2026-03-14T10:18:20.3900000Z Result: true
+2026-03-14T10:18:20.3910000Z Requested labels: ubuntu-latest
+2026-03-14T10:18:20.3910000Z Job defined at: tomtom800/Text-to-Speech/.github/workflows/build.yml@refs/heads/master
+2026-03-14T10:18:20.3910000Z Waiting for a runner to pick up this job...
+2026-03-14T10:18:20.8910000Z Job is about to start running on the hosted runner: GitHub Actions 1000000058
+2026-03-14T10:18:20.8900000Z Job is waiting for a hosted runner to come online.

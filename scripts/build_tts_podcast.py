@@ -173,7 +173,27 @@ def request_with_retry(
             time.sleep(backoff)
             backoff *= 2
 
-    raise RuntimeError(f"Request failed after {attempts} attempts: {last_error}")
+    raise RuntimeError(f"Request failed after {attempts} attempts: {describe_request_exception(last_error)}")
+
+
+def summarize_http_response(response: requests.Response) -> str:
+    reason = response.reason or ""
+    body = response.text.strip()
+    body = re.sub(r"\s+", " ", body)
+    if len(body) > 600:
+        body = body[:600] + "..."
+
+    if body:
+        return f"HTTP {response.status_code} {reason}: {body}"
+    return f"HTTP {response.status_code} {reason}".strip()
+
+
+def describe_request_exception(exc: Optional[Exception]) -> str:
+    if exc is None:
+        return "unknown error"
+    if isinstance(exc, requests.HTTPError) and exc.response is not None:
+        return summarize_http_response(exc.response)
+    return str(exc)
 
 
 
@@ -218,14 +238,14 @@ def synthesize_chunk_with_retry(
             out_path.write_bytes(base64.b64decode(audio_content))
             return
         except Exception as exc:
-            last_error = exc
+            last_error = RuntimeError(describe_request_exception(exc))
             safe_unlink(out_path)
             if attempt == attempts:
                 break
             time.sleep(backoff)
             backoff *= 2
 
-    raise RuntimeError(f"Google TTS failed after {attempts} attempts: {last_error}")
+    raise RuntimeError(f"Google TTS failed after {attempts} attempts: {describe_request_exception(last_error)}")
 
 
 
@@ -703,6 +723,7 @@ def main() -> None:
 
     for queue_tag in TAG_CONFIG.keys():
         docs = fetch_docs_by_tag(session, queue_tag)
+        print(f"Fetched docs for tag '{queue_tag}': {len(docs)}")
         for doc in docs:
             doc_id = str(doc.get("id"))
             if not doc_id:
@@ -711,6 +732,7 @@ def main() -> None:
             fetched_tags_by_doc.setdefault(doc_id, set()).add(queue_tag)
 
     doc_ids = list(fetched_docs.keys())
+    print(f"Unique docs fetched across queue tags: {len(doc_ids)}")
 
     summary = {
         "processed_docs": 0,
@@ -725,28 +747,37 @@ def main() -> None:
     processed_counter = 0
     for doc_id in doc_ids:
         if processed_counter >= MAX_DOCS_PER_RUN:
+            print(f"Reached MAX_DOCS_PER_RUN={MAX_DOCS_PER_RUN}; remaining docs deferred")
             break
 
         doc = fetched_docs[doc_id]
         queue_tag = choose_queue_tag(doc, fetched_tags_by_doc.get(doc_id, set()))
         if queue_tag is None:
+            print(
+                f"Skipping doc {doc_id}: ambiguous queue tags "
+                f"{sorted(extract_doc_tags(doc) | fetched_tags_by_doc.get(doc_id, set()))}"
+            )
             summary["ambiguous"] += 1
             continue
 
         try:
+            print(f"Processing doc {doc_id} with queue tag '{queue_tag}'")
             status, part_count = process_doc(session, doc, queue_tag, state)
             if status == "processed":
+                print(f"Processed doc {doc_id}: created {part_count} part(s)")
                 summary["processed_docs"] += 1
                 summary["processed_parts"] += part_count
                 processed_counter += 1
             elif status == "unchanged":
+                print(f"Skipped unchanged doc {doc_id}")
                 summary["unchanged"] += 1
             elif status == "too_short":
+                print(f"Skipped too-short doc {doc_id}")
                 summary["too_short"] += 1
         except Exception as exc:
             summary["failed"] += 1
             summary["failed_doc_ids"].append(doc_id)
-            print(f"Failed for doc {doc_id}: {exc}")
+            print(f"Failed for doc {doc_id}: {describe_request_exception(exc)}")
 
     pruned_by_retention = enforce_retention(state, RETAIN_MAX_ITEMS)
     removed_orphans = remove_orphan_audio_files(state)

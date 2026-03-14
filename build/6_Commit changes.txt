@@ -1,0 +1,21 @@
+﻿2026-03-14T10:18:36.9500368Z ##[group]Run git config user.name "github-actions[bot]"
+2026-03-14T10:18:36.9500779Z [36;1mgit config user.name "github-actions[bot]"[0m
+2026-03-14T10:18:36.9501220Z [36;1mgit config user.email "41898282+github-actions[bot]@users.noreply.github.com"[0m
+2026-03-14T10:18:36.9501640Z [36;1mgit add docs/ state/[0m
+2026-03-14T10:18:36.9501902Z [36;1mif git diff --cached --quiet; then[0m
+2026-03-14T10:18:36.9502213Z [36;1m  echo "committed=false" >> "$GITHUB_OUTPUT"[0m
+2026-03-14T10:18:36.9502491Z [36;1melse[0m
+2026-03-14T10:18:36.9502705Z [36;1m  git commit -m "Update TTS podcast"[0m
+2026-03-14T10:18:36.9503009Z [36;1m  echo "committed=true" >> "$GITHUB_OUTPUT"[0m
+2026-03-14T10:18:36.9503283Z [36;1mfi[0m
+2026-03-14T10:18:36.9552481Z shell: /usr/bin/bash -e {0}
+2026-03-14T10:18:36.9552719Z env:
+2026-03-14T10:18:36.9552961Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-14T10:18:36.9553384Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-14T10:18:36.9554078Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-14T10:18:36.9554436Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-14T10:18:36.9554804Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-14T10:18:36.9555173Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-14T10:18:36.9555477Z ##[endgroup]
+2026-03-14T10:18:36.9982043Z [master 2e4b8e9] Update TTS podcast
+2026-03-14T10:18:36.9982517Z  1 file changed, 1 insertion(+), 1 deletion(-)
