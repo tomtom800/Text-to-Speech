@@ -36,6 +36,42 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01khyhfps06fn30f1fjhq24cze": {
+      "doc_id": "01khyhfps06fn30f1fjhq24cze",
+      "title": "One Owl's Second Chance",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze",
+      "fingerprint": "f17b9d8857d8fe40c138708cfa5e508a3f994b1d",
+      "processed_at": "2026-03-14T17:35:25Z",
+      "parts": [
+        {
+          "doc_id": "01khyhfps06fn30f1fjhq24cze",
+          "part": 1,
+          "title": "One Owl's Second Chance (Part 1)",
+          "description": "https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze",
+          "guid": "reader-01khyhfps06fn30f1fjhq24cze-f17b9d88-part-1",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p01.mp3",
+          "length": 1030752,
+          "filename": "20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p01.mp3",
+          "processed_at": "2026-03-14T17:35:25Z",
+          "source_url": "https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze",
+          "queue_tag": "tts-en"
+        },
+        {
+          "doc_id": "01khyhfps06fn30f1fjhq24cze",
+          "part": 2,
+          "title": "One Owl's Second Chance (Part 2)",
+          "description": "https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze",
+          "guid": "reader-01khyhfps06fn30f1fjhq24cze-f17b9d88-part-2",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p02.mp3",
+          "length": 467712,
+          "filename": "20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance_p02.mp3",
+          "processed_at": "2026-03-14T17:35:25Z",
+          "source_url": "https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
