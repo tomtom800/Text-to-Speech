@@ -38,7 +38,7 @@ jobs:
         env:
           READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PODCAST_BASE_URL: https://github.com/tomtom800/Text-to-Speech
+          PODCAST_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
           RETAIN_MAX_ITEMS: "200"
           MAX_DOCS_PER_RUN: "25"
         run: |
