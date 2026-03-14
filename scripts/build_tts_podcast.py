@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import base64
 import datetime as dt
 import hashlib
 import html
@@ -12,16 +13,19 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 import requests
 from bs4 import BeautifulSoup
-from openai import OpenAI
 
 # ==========
 # Config
 # ==========
 
 READER_TOKEN = os.environ["READWISE_TOKEN"]
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+GOOGLE_TTS_API_KEY = os.environ["GOOGLE_TTS_API_KEY"]
 
 READER_LIST_URL = "https://readwise.io/api/v3/list/"
+GOOGLE_TTS_URL = os.environ.get(
+    "GOOGLE_TTS_URL",
+    "https://texttospeech.googleapis.com/v1/text:synthesize",
+)
 
 SITE_ROOT = pathlib.Path("docs")
 AUDIO_DIR = SITE_ROOT / "audio"
@@ -37,8 +41,7 @@ PODCAST_LANGUAGE = os.environ.get("PODCAST_LANGUAGE", "en-gb")
 PODCAST_AUTHOR = os.environ.get("PODCAST_AUTHOR", "Tom Selmes")
 PODCAST_IMAGE_URL = os.environ.get("PODCAST_IMAGE_URL", "")
 
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini-tts")
-OPENAI_VOICE = os.environ.get("OPENAI_VOICE", "fable")
+GOOGLE_TTS_VOICE = os.environ.get("GOOGLE_TTS_VOICE", "Umbriel")
 RESPONSE_FORMAT = "mp3"
 
 MAX_CHARS_PER_CHUNK = int(os.environ.get("MAX_CHARS_PER_CHUNK", "5500"))
@@ -47,26 +50,14 @@ MAX_DOCS_PER_RUN = int(os.environ.get("MAX_DOCS_PER_RUN", "25"))
 RETAIN_MAX_ITEMS = int(os.environ.get("RETAIN_MAX_ITEMS", "200"))
 
 READWISE_RETRY_ATTEMPTS = int(os.environ.get("READWISE_RETRY_ATTEMPTS", "4"))
-OPENAI_RETRY_ATTEMPTS = int(os.environ.get("OPENAI_RETRY_ATTEMPTS", "3"))
+TTS_RETRY_ATTEMPTS = int(os.environ.get("TTS_RETRY_ATTEMPTS", "3"))
 
 TAG_CONFIG = {
     "tts-en": {
-        "lang": "en",
-        "instructions": (
-            "Read clearly and naturally in English. "
-            "Use a calm, neutral speaking style. "
-            "Pause slightly at headings. "
-            "Read abbreviations naturally."
-        ),
+        "lang": "en-GB",
     },
     "tts-de": {
-        "lang": "de",
-        "instructions": (
-            "Read clearly and naturally in German. "
-            "Use standard High German pronunciation. "
-            "Keep a calm, neutral speaking style. "
-            "Pause slightly at headings."
-        ),
+        "lang": "de-DE",
     },
 }
 
@@ -187,9 +178,9 @@ def request_with_retry(
 
 
 def synthesize_chunk_with_retry(
-    client: OpenAI,
+    session: requests.Session,
     text: str,
-    instructions: str,
+    language_code: str,
     out_path: pathlib.Path,
     attempts: int,
 ) -> None:
@@ -198,14 +189,33 @@ def synthesize_chunk_with_retry(
 
     for attempt in range(1, attempts + 1):
         try:
-            with client.audio.speech.with_streaming_response.create(
-                model=OPENAI_MODEL,
-                voice=OPENAI_VOICE,
-                input=text,
-                instructions=instructions,
-                response_format=RESPONSE_FORMAT,
-            ) as response:
-                response.stream_to_file(out_path)
+            response = session.post(
+                GOOGLE_TTS_URL,
+                headers={
+                    "X-Goog-Api-Key": GOOGLE_TTS_API_KEY,
+                    "Content-Type": "application/json; charset=utf-8",
+                },
+                json={
+                    "input": {"text": text},
+                    "voice": {
+                        "languageCode": language_code,
+                        "name": f"{language_code}-Chirp3-HD-{GOOGLE_TTS_VOICE}",
+                    },
+                    "audioConfig": {
+                        "audioEncoding": RESPONSE_FORMAT.upper(),
+                    },
+                },
+                timeout=120,
+            )
+            if response.status_code == 429 or response.status_code >= 500:
+                response.raise_for_status()
+            response.raise_for_status()
+
+            data = response.json()
+            audio_content = data.get("audioContent")
+            if not audio_content:
+                raise RuntimeError(f"Google TTS returned no audioContent: {data}")
+            out_path.write_bytes(base64.b64decode(audio_content))
             return
         except Exception as exc:
             last_error = exc
@@ -215,7 +225,7 @@ def synthesize_chunk_with_retry(
             time.sleep(backoff)
             backoff *= 2
 
-    raise RuntimeError(f"OpenAI TTS failed after {attempts} attempts: {last_error}")
+    raise RuntimeError(f"Google TTS failed after {attempts} attempts: {last_error}")
 
 
 
@@ -548,7 +558,7 @@ def make_filename(doc_id: str, title: str, fingerprint: str, part_index: int, ti
 
 
 def process_doc(
-    client: OpenAI,
+    session: requests.Session,
     doc: Dict[str, Any],
     queue_tag: str,
     state: Dict[str, Any],
@@ -591,11 +601,11 @@ def process_doc(
         out_path = AUDIO_DIR / filename
 
         synthesize_chunk_with_retry(
-            client=client,
+            session=session,
             text=chunk,
-            instructions=cfg["instructions"],
+            language_code=cfg["lang"],
             out_path=out_path,
-            attempts=OPENAI_RETRY_ATTEMPTS,
+            attempts=TTS_RETRY_ATTEMPTS,
         )
 
         guid = f"reader-{doc_id}-{fingerprint[:8]}-part-{idx}"
@@ -686,7 +696,6 @@ def remove_orphan_audio_files(state: Dict[str, Any]) -> int:
 def main() -> None:
     ensure_dirs()
     state = load_state()
-    client = OpenAI(api_key=OPENAI_API_KEY)
     session = requests.Session()
 
     fetched_docs: Dict[str, Dict[str, Any]] = {}
@@ -725,7 +734,7 @@ def main() -> None:
             continue
 
         try:
-            status, part_count = process_doc(client, doc, queue_tag, state)
+            status, part_count = process_doc(session, doc, queue_tag, state)
             if status == "processed":
                 summary["processed_docs"] += 1
                 summary["processed_parts"] += part_count
