@@ -1,14 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal TTS Podcast</title>
-    <link>https://USERNAME.github.io/REPO/</link>
+    <link>https://github.com/tomtom800/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Mar 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://USERNAME.github.io/REPO/podcast.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Mar 2026 07:36:55 GMT</lastBuildDate>
+    <atom:link href="https://github.com/tomtom800/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
+    <item>
+      <title>[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 1)</title>
+      <description>https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9</description>
+      <guid>reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-1</guid>
+      <pubDate>Sat, 14 Mar 2026 07:35:38 GMT</pubDate>
+      <enclosure url="https://github.com/tomtom800/Text-to-Speech/audio/20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p01.mp3" length="5241600" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 2)</title>
+      <description>https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9</description>
+      <guid>reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-2</guid>
+      <pubDate>Sat, 14 Mar 2026 07:35:38 GMT</pubDate>
+      <enclosure url="https://github.com/tomtom800/Text-to-Speech/audio/20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p02.mp3" length="2834688" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
   </channel>
 </rss>

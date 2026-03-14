@@ -1,4 +1,41 @@
 {
   "version": 2,
-  "docs": {}
+  "docs": {
+    "01kjn0cpqaw1tq69nmn1brxtd9": {
+      "doc_id": "01kjn0cpqaw1tq69nmn1brxtd9",
+      "title": "Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9",
+      "fingerprint": "b0eab320893e1b0bded0813c67345399ea4e279a",
+      "processed_at": "2026-03-14T07:35:38Z",
+      "parts": [
+        {
+          "doc_id": "01kjn0cpqaw1tq69nmn1brxtd9",
+          "part": 1,
+          "title": "[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 1)",
+          "description": "https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9",
+          "guid": "reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-1",
+          "url": "https://github.com/tomtom800/Text-to-Speech/audio/20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p01.mp3",
+          "length": 5241600,
+          "filename": "20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p01.mp3",
+          "processed_at": "2026-03-14T07:35:38Z",
+          "source_url": "https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9",
+          "queue_tag": "tts-en"
+        },
+        {
+          "doc_id": "01kjn0cpqaw1tq69nmn1brxtd9",
+          "part": 2,
+          "title": "[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 2)",
+          "description": "https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9",
+          "guid": "reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-2",
+          "url": "https://github.com/tomtom800/Text-to-Speech/audio/20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p02.mp3",
+          "length": 2834688,
+          "filename": "20260314_doc01kjn0cpqaw1tq69nmn1brxtd9_b0eab320_stunning-views-honesty-shops-and-community-pubs-people-power_p02.mp3",
+          "processed_at": "2026-03-14T07:35:38Z",
+          "source_url": "https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9",
+          "queue_tag": "tts-en"
+        }
+      ]
+    }
+  }
 }
