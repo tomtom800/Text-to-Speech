@@ -1,0 +1,72 @@
+name: Build TTS Podcast
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tts-podcast-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build feed
+        env:
+          READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PODCAST_BASE_URL: https://USERNAME.github.io/REPO/
+          RETAIN_MAX_ITEMS: "200"
+          MAX_DOCS_PER_RUN: "25"
+        run: |
+          python scripts/build_tts_podcast.py
+
+      - name: Commit changes
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ state/
+          if git diff --cached --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Update TTS podcast"
+            echo "committed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push changes with retry
+        if: steps.commit.outputs.committed == 'true'
+        run: |
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            if git push origin "${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+
+          echo "Push failed after retries"
+          exit 1

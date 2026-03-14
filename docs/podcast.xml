@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal TTS Podcast</title>
+    <link>https://USERNAME.github.io/REPO/</link>
+    <description>Personal TTS feed generated from Readwise Reader tags.</description>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 14 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://USERNAME.github.io/REPO/podcast.xml" rel="self" type="application/rss+xml" />
+    <itunes:author>Tom Selmes</itunes:author>
+    <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
+    <itunes:explicit>false</itunes:explicit>
+  </channel>
+</rss>
