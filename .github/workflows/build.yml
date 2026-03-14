@@ -39,6 +39,7 @@ jobs:
           READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           PODCAST_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          PODCAST_IMAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/image.png
           RETAIN_MAX_ITEMS: "200"
           MAX_DOCS_PER_RUN: "25"
         run: |

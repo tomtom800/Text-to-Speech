@@ -52,7 +52,6 @@ OPENAI_RETRY_ATTEMPTS = int(os.environ.get("OPENAI_RETRY_ATTEMPTS", "3"))
 TAG_CONFIG = {
     "tts-en": {
         "lang": "en",
-        "title_prefix": "[EN] ",
         "instructions": (
             "Read clearly and naturally in English. "
             "Use a calm, neutral speaking style. "
@@ -62,7 +61,6 @@ TAG_CONFIG = {
     },
     "tts-de": {
         "lang": "de",
-        "title_prefix": "[DE] ",
         "instructions": (
             "Read clearly and naturally in German. "
             "Use standard High German pronunciation. "
@@ -116,6 +114,10 @@ def slugify(text: str) -> str:
     text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
     text = re.sub(r"[-\s]+", "-", text)
     return text[:60].strip("-") or "untitled"
+
+
+def normalize_episode_title(title: str) -> str:
+    return re.sub(r"^\[(EN|DE)\]\s*", "", title, flags=re.IGNORECASE)
 
 
 
@@ -254,10 +256,7 @@ def clean_html_to_speech_text(raw_html: str, fallback_title: str, source_url: st
     text = re.sub(r"\s+\n", "\n", text)
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
 
-    intro = [fallback_title]
-    if source_url:
-        intro.append(f"Source: {source_url}")
-    intro_text = ". ".join(intro) + ".\n\n"
+    intro_text = f"{fallback_title}.\n\n"
 
     return intro_text + text
 
@@ -339,6 +338,7 @@ def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
 
     if raw.get("version") == 2 and isinstance(raw.get("docs"), dict):
         state["docs"] = raw["docs"]
+        normalize_episode_titles_in_state(state)
         return state
 
     # Migration path from v1 shape: {"processed": {doc_id: {...}}}
@@ -357,6 +357,7 @@ def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
                 "parts": record.get("parts", []),
             }
 
+    normalize_episode_titles_in_state(state)
     return state
 
 
@@ -372,6 +373,15 @@ def load_state() -> Dict[str, Any]:
 
 def save_state(state: Dict[str, Any]) -> None:
     STATE_PATH.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+
+def normalize_episode_titles_in_state(state: Dict[str, Any]) -> None:
+    for doc in state["docs"].values():
+        for part in doc.get("parts", []):
+            title = part.get("title")
+            if isinstance(title, str):
+                part["title"] = normalize_episode_title(title)
 
 
 
@@ -569,7 +579,7 @@ def process_doc(
     parts: List[Dict[str, Any]] = []
     for idx, chunk in enumerate(chunks, start=1):
         part_suffix = f" (Part {idx})" if len(chunks) > 1 else ""
-        episode_title = f'{cfg["title_prefix"]}{title}{part_suffix}'
+        episode_title = f"{title}{part_suffix}"
 
         filename = make_filename(
             doc_id=doc_id,

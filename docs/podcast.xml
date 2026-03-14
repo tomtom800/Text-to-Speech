@@ -10,8 +10,9 @@
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
     <item>
-      <title>[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 1)</title>
+      <title>Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 1)</title>
       <description>https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9</description>
       <guid>reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-1</guid>
       <pubDate>Sat, 14 Mar 2026 07:35:38 GMT</pubDate>
@@ -20,7 +21,7 @@
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
-      <title>[EN] Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 2)</title>
+      <title>Stunning views, honesty shops and community pubs: people power on the Llŷn peninsula in Wales (Part 2)</title>
       <description>https://read.readwise.io/read/01kjn0cpqaw1tq69nmn1brxtd9</description>
       <guid>reader-01kjn0cpqaw1tq69nmn1brxtd9-b0eab320-part-2</guid>
       <pubDate>Sat, 14 Mar 2026 07:35:38 GMT</pubDate>
