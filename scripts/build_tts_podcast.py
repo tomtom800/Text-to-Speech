@@ -44,7 +44,11 @@ PODCAST_IMAGE_URL = os.environ.get("PODCAST_IMAGE_URL", "")
 GOOGLE_TTS_VOICE = os.environ.get("GOOGLE_TTS_VOICE", "Umbriel")
 RESPONSE_FORMAT = "mp3"
 
-MAX_CHARS_PER_CHUNK = int(os.environ.get("MAX_CHARS_PER_CHUNK", "5500"))
+GOOGLE_TTS_INPUT_BYTE_LIMIT = int(os.environ.get("GOOGLE_TTS_INPUT_BYTE_LIMIT", "5000"))
+MAX_BYTES_PER_CHUNK = min(
+    int(os.environ.get("MAX_BYTES_PER_CHUNK", os.environ.get("MAX_CHARS_PER_CHUNK", "4500"))),
+    GOOGLE_TTS_INPUT_BYTE_LIMIT,
+)
 MIN_TEXT_CHARS = int(os.environ.get("MIN_TEXT_CHARS", "150"))
 MAX_DOCS_PER_RUN = int(os.environ.get("MAX_DOCS_PER_RUN", "25"))
 RETAIN_MAX_ITEMS = int(os.environ.get("RETAIN_MAX_ITEMS", "200"))
@@ -294,15 +298,48 @@ def clean_html_to_speech_text(raw_html: str, fallback_title: str, source_url: st
 
 def split_long_sentence(sentence: str, max_chars: int) -> List[str]:
     parts: List[str] = []
-    cursor = 0
-    while cursor < len(sentence):
-        parts.append(sentence[cursor : cursor + max_chars].strip())
-        cursor += max_chars
+    token_stream = re.split(r"(\s+)", sentence)
+    current = ""
+
+    for token in token_stream:
+        if not token:
+            continue
+
+        proposed = current + token
+        if utf8_len(proposed) <= max_chars:
+            current = proposed
+            continue
+
+        if current.strip():
+            parts.append(current.strip())
+            current = ""
+
+        if utf8_len(token) <= max_chars:
+            current = token
+            continue
+
+        # Hard split a single oversized token by UTF-8 byte length.
+        for char in token:
+            proposed_char = current + char
+            if utf8_len(proposed_char) > max_chars and current:
+                parts.append(current.strip())
+                current = char
+            else:
+                current = proposed_char
+
+    if current.strip():
+        parts.append(current.strip())
+
     return [part for part in parts if part]
 
 
 
-def split_text(text: str, max_chars: int = MAX_CHARS_PER_CHUNK) -> List[str]:
+def utf8_len(text: str) -> int:
+    return len(text.encode("utf-8"))
+
+
+
+def split_text(text: str, max_chars: int = MAX_BYTES_PER_CHUNK) -> List[str]:
     paragraphs = text.split("\n\n")
     chunks: List[str] = []
     current: List[str] = []
@@ -313,7 +350,7 @@ def split_text(text: str, max_chars: int = MAX_CHARS_PER_CHUNK) -> List[str]:
         if not para:
             continue
 
-        if len(para) > max_chars:
+        if utf8_len(para) > max_chars:
             sentences = re.split(r"(?<=[.!?])\s+", para)
             for sentence in sentences:
                 sentence = sentence.strip()
@@ -321,26 +358,28 @@ def split_text(text: str, max_chars: int = MAX_CHARS_PER_CHUNK) -> List[str]:
                     continue
 
                 oversized_parts = [sentence]
-                if len(sentence) > max_chars:
+                if utf8_len(sentence) > max_chars:
                     oversized_parts = split_long_sentence(sentence, max_chars)
 
                 for part in oversized_parts:
-                    if current_len + len(part) + 2 > max_chars and current:
+                    part_len = utf8_len(part)
+                    if current_len + part_len + 2 > max_chars and current:
                         chunks.append("\n\n".join(current).strip())
                         current = []
                         current_len = 0
 
                     current.append(part)
-                    current_len += len(part) + 2
+                    current_len += part_len + 2
             continue
 
-        if current_len + len(para) + 2 > max_chars and current:
+        para_len = utf8_len(para)
+        if current_len + para_len + 2 > max_chars and current:
             chunks.append("\n\n".join(current).strip())
             current = []
             current_len = 0
 
         current.append(para)
-        current_len += len(para) + 2
+        current_len += para_len + 2
 
     if current:
         chunks.append("\n\n".join(current).strip())
