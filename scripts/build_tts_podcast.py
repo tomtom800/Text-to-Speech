@@ -52,9 +52,14 @@ MAX_BYTES_PER_CHUNK = min(
 MIN_TEXT_CHARS = int(os.environ.get("MIN_TEXT_CHARS", "150"))
 MAX_DOCS_PER_RUN = int(os.environ.get("MAX_DOCS_PER_RUN", "25"))
 RETAIN_MAX_ITEMS = int(os.environ.get("RETAIN_MAX_ITEMS", "200"))
+PUBLISH_MODE = os.environ.get("PUBLISH_MODE", "combined").strip().lower()
 
 READWISE_RETRY_ATTEMPTS = int(os.environ.get("READWISE_RETRY_ATTEMPTS", "4"))
 TTS_RETRY_ATTEMPTS = int(os.environ.get("TTS_RETRY_ATTEMPTS", "3"))
+
+VALID_PUBLISH_MODES = {"split", "combined"}
+if PUBLISH_MODE not in VALID_PUBLISH_MODES:
+    raise ValueError(f"Invalid PUBLISH_MODE='{PUBLISH_MODE}'. Expected one of: {sorted(VALID_PUBLISH_MODES)}")
 
 TAG_CONFIG = {
     "tts-en": {
@@ -115,6 +120,11 @@ def normalize_episode_title(title: str) -> str:
     return re.sub(r"^\[(EN|DE)\]\s*", "", title, flags=re.IGNORECASE)
 
 
+def normalize_publish_mode(value: str) -> str:
+    value = (value or "").strip().lower()
+    return value if value in VALID_PUBLISH_MODES else "split"
+
+
 
 def build_audio_url(filename: str) -> str:
     return PODCAST_BASE_URL.rstrip("/") + "/audio/" + filename
@@ -142,6 +152,17 @@ def extract_doc_tags(doc: Dict[str, Any]) -> Set[str]:
 def safe_unlink(path: pathlib.Path) -> None:
     if path.exists() and path.is_file():
         path.unlink()
+
+
+def concatenate_binary_files(inputs: List[pathlib.Path], output: pathlib.Path) -> None:
+    with output.open("wb") as out_file:
+        for input_path in inputs:
+            with input_path.open("rb") as in_file:
+                while True:
+                    chunk = in_file.read(1024 * 1024)
+                    if not chunk:
+                        break
+                    out_file.write(chunk)
 
 
 
@@ -408,6 +429,7 @@ def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
     if raw.get("version") == 2 and isinstance(raw.get("docs"), dict):
         state["docs"] = raw["docs"]
         normalize_episode_titles_in_state(state)
+        normalize_publish_modes_in_state(state)
         return state
 
     # Migration path from v1 shape: {"processed": {doc_id: {...}}}
@@ -423,10 +445,12 @@ def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
                 "source_url": record.get("source_url", ""),
                 "fingerprint": record.get("fingerprint", ""),
                 "processed_at": record.get("processed_at", iso_now()),
+                "publish_mode": "split",
                 "parts": record.get("parts", []),
             }
 
     normalize_episode_titles_in_state(state)
+    normalize_publish_modes_in_state(state)
     return state
 
 
@@ -451,6 +475,11 @@ def normalize_episode_titles_in_state(state: Dict[str, Any]) -> None:
             title = part.get("title")
             if isinstance(title, str):
                 part["title"] = normalize_episode_title(title)
+
+
+def normalize_publish_modes_in_state(state: Dict[str, Any]) -> None:
+    for doc in state["docs"].values():
+        doc["publish_mode"] = normalize_publish_mode(str(doc.get("publish_mode", "")))
 
 
 
@@ -608,11 +637,23 @@ def choose_queue_tag(doc: Dict[str, Any], fetched_tags: Set[str]) -> Optional[st
 
 
 
-def make_filename(doc_id: str, title: str, fingerprint: str, part_index: int, timestamp: dt.datetime) -> str:
+def make_filename(
+    doc_id: str,
+    title: str,
+    fingerprint: str,
+    timestamp: dt.datetime,
+    part_index: Optional[int] = None,
+    temporary: bool = False,
+) -> str:
     date_prefix = timestamp.strftime("%Y%m%d")
     fp8 = fingerprint[:8]
     slug = slugify(title)
-    return f"{date_prefix}_doc{doc_id}_{fp8}_{slug}_p{part_index:02d}.mp3"
+    basename = f"{date_prefix}_doc{doc_id}_{fp8}_{slug}"
+    if temporary:
+        basename += "_tmp"
+    if part_index is not None:
+        basename += f"_p{part_index:02d}"
+    return f"{basename}.mp3"
 
 
 
@@ -635,7 +676,8 @@ def process_doc(
 
     fingerprint = sha1_text(clean_text)
     existing = state["docs"].get(doc_id)
-    if existing and existing.get("fingerprint") == fingerprint:
+    existing_publish_mode = normalize_publish_mode(str(existing.get("publish_mode", ""))) if existing else "split"
+    if existing and existing.get("fingerprint") == fingerprint and existing_publish_mode == PUBLISH_MODE:
         return "unchanged", 0
 
     chunks = split_text(clean_text)
@@ -646,40 +688,95 @@ def process_doc(
     processed_dt = iso_to_dt(processed_at)
 
     parts: List[Dict[str, Any]] = []
-    for idx, chunk in enumerate(chunks, start=1):
-        part_suffix = f" (Part {idx})" if len(chunks) > 1 else ""
-        episode_title = f"{title}{part_suffix}"
+    description = source_url or f"Generated from Readwise Reader item {doc_id}"
 
-        filename = make_filename(
+    if PUBLISH_MODE == "split":
+        for idx, chunk in enumerate(chunks, start=1):
+            part_suffix = f" (Part {idx})" if len(chunks) > 1 else ""
+            episode_title = f"{title}{part_suffix}"
+
+            filename = make_filename(
+                doc_id=doc_id,
+                title=title,
+                fingerprint=fingerprint,
+                timestamp=processed_dt,
+                part_index=idx,
+            )
+            out_path = AUDIO_DIR / filename
+
+            synthesize_chunk_with_retry(
+                session=session,
+                text=chunk,
+                language_code=cfg["lang"],
+                out_path=out_path,
+                attempts=TTS_RETRY_ATTEMPTS,
+            )
+
+            guid = f"reader-{doc_id}-{fingerprint[:8]}-part-{idx}"
+
+            parts.append(
+                {
+                    "doc_id": doc_id,
+                    "part": idx,
+                    "title": episode_title,
+                    "description": description,
+                    "guid": guid,
+                    "url": build_audio_url(filename),
+                    "length": file_size(out_path),
+                    "filename": filename,
+                    "processed_at": processed_at,
+                    "source_url": source_url,
+                    "queue_tag": queue_tag,
+                }
+            )
+    else:
+        temp_chunk_paths: List[pathlib.Path] = []
+        final_filename = make_filename(
             doc_id=doc_id,
             title=title,
             fingerprint=fingerprint,
-            part_index=idx,
             timestamp=processed_dt,
         )
-        out_path = AUDIO_DIR / filename
+        final_out_path = AUDIO_DIR / final_filename
+        try:
+            for idx, chunk in enumerate(chunks, start=1):
+                temp_filename = make_filename(
+                    doc_id=doc_id,
+                    title=title,
+                    fingerprint=fingerprint,
+                    timestamp=processed_dt,
+                    part_index=idx,
+                    temporary=True,
+                )
+                temp_out_path = AUDIO_DIR / temp_filename
+                temp_chunk_paths.append(temp_out_path)
 
-        synthesize_chunk_with_retry(
-            session=session,
-            text=chunk,
-            language_code=cfg["lang"],
-            out_path=out_path,
-            attempts=TTS_RETRY_ATTEMPTS,
-        )
+                synthesize_chunk_with_retry(
+                    session=session,
+                    text=chunk,
+                    language_code=cfg["lang"],
+                    out_path=temp_out_path,
+                    attempts=TTS_RETRY_ATTEMPTS,
+                )
 
-        guid = f"reader-{doc_id}-{fingerprint[:8]}-part-{idx}"
-        description = source_url or f"Generated from Readwise Reader item {doc_id}"
+            concatenate_binary_files(temp_chunk_paths, final_out_path)
+        except Exception:
+            safe_unlink(final_out_path)
+            raise
+        finally:
+            for temp_path in temp_chunk_paths:
+                safe_unlink(temp_path)
 
         parts.append(
             {
                 "doc_id": doc_id,
-                "part": idx,
-                "title": episode_title,
+                "part": 1,
+                "title": title,
                 "description": description,
-                "guid": guid,
-                "url": build_audio_url(filename),
-                "length": file_size(out_path),
-                "filename": filename,
+                "guid": f"reader-{doc_id}-{fingerprint[:8]}",
+                "url": build_audio_url(final_filename),
+                "length": file_size(final_out_path),
+                "filename": final_filename,
                 "processed_at": processed_at,
                 "source_url": source_url,
                 "queue_tag": queue_tag,
@@ -693,6 +790,7 @@ def process_doc(
         "source_url": source_url,
         "fingerprint": fingerprint,
         "processed_at": processed_at,
+        "publish_mode": PUBLISH_MODE,
         "parts": parts,
     }
 
