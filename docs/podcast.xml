@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Mar 2026 21:40:26 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 22:47:57 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>Christliche Sexualmoral: "Gott hat sicher nichts gegen Sex"</title>
+      <description>https://read.readwise.io/read/01kkq6aec8t7je2eg88j63w5vn</description>
+      <guid>reader-01kkq6aec8t7je2eg88j63w5vn-bb34ccec</guid>
+      <pubDate>Sat, 14 Mar 2026 22:45:01 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01kkq6aec8t7je2eg88j63w5vn_bb34ccec_christliche-sexualmoral-gott-hat-sicher-nichts-gegen-sex.mp3" length="4642368" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Apocalypse no: how almost everything we thought we knew about the Maya is wrong</title>
       <description>https://read.readwise.io/read/01kh8bpvw59h5xy8tbk7vqksts</description>

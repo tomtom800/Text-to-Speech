@@ -72,6 +72,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kkq6aec8t7je2eg88j63w5vn": {
+      "doc_id": "01kkq6aec8t7je2eg88j63w5vn",
+      "title": "Christliche Sexualmoral: \"Gott hat sicher nichts gegen Sex\"",
+      "queue_tag": "tts-de",
+      "source_url": "https://read.readwise.io/read/01kkq6aec8t7je2eg88j63w5vn",
+      "fingerprint": "bb34ccecfd9c4d6af540b68ec91c59ad709e9439",
+      "processed_at": "2026-03-14T22:45:01Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kkq6aec8t7je2eg88j63w5vn",
+          "part": 1,
+          "title": "Christliche Sexualmoral: \"Gott hat sicher nichts gegen Sex\"",
+          "description": "https://read.readwise.io/read/01kkq6aec8t7je2eg88j63w5vn",
+          "guid": "reader-01kkq6aec8t7je2eg88j63w5vn-bb34ccec",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01kkq6aec8t7je2eg88j63w5vn_bb34ccec_christliche-sexualmoral-gott-hat-sicher-nichts-gegen-sex.mp3",
+          "length": 4642368,
+          "filename": "20260314_doc01kkq6aec8t7je2eg88j63w5vn_bb34ccec_christliche-sexualmoral-gott-hat-sicher-nichts-gegen-sex.mp3",
+          "processed_at": "2026-03-14T22:45:01Z",
+          "source_url": "https://read.readwise.io/read/01kkq6aec8t7je2eg88j63w5vn",
+          "queue_tag": "tts-de"
+        }
+      ]
     }
   }
 }
