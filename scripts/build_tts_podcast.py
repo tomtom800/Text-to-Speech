@@ -441,7 +441,12 @@ def collect_feed_items_from_state(state: Dict[str, Any]) -> List[Dict[str, Any]]
     items: List[Dict[str, Any]] = []
     for doc in state["docs"].values():
         for part in doc.get("parts", []):
-            items.append(part)
+            item = dict(part)
+            # Always derive enclosure URLs from current base URL when filename is present.
+            filename = item.get("filename")
+            if filename:
+                item["url"] = build_audio_url(filename)
+            items.append(item)
 
     items.sort(key=lambda x: x.get("processed_at", ""), reverse=True)
     return items
@@ -452,14 +457,7 @@ def build_feed(items: List[Dict[str, Any]]) -> None:
     ET.register_namespace("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd")
     ET.register_namespace("atom", "http://www.w3.org/2005/Atom")
 
-    rss = ET.Element(
-        "rss",
-        {
-            "version": "2.0",
-            "xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
-            "xmlns:atom": "http://www.w3.org/2005/Atom",
-        },
-    )
+    rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
 
     ET.SubElement(channel, "title").text = PODCAST_TITLE
