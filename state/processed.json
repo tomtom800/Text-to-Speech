@@ -96,6 +96,78 @@
           "queue_tag": "tts-de"
         }
       ]
+    },
+    "01khcnrrmj3qyjz6ksjrn95v52": {
+      "doc_id": "01khcnrrmj3qyjz6ksjrn95v52",
+      "title": "Experience: I’m a professional chef in Antarctica",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01khcnrrmj3qyjz6ksjrn95v52",
+      "fingerprint": "0350b6497aaeaf0d992b3619725b479408c0b1d8",
+      "processed_at": "2026-03-15T17:44:15Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01khcnrrmj3qyjz6ksjrn95v52",
+          "part": 1,
+          "title": "Experience: I’m a professional chef in Antarctica",
+          "description": "https://read.readwise.io/read/01khcnrrmj3qyjz6ksjrn95v52",
+          "guid": "reader-01khcnrrmj3qyjz6ksjrn95v52-0350b649",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01khcnrrmj3qyjz6ksjrn95v52_0350b649_experience-im-a-professional-chef-in-antarctica.mp3",
+          "length": 1239360,
+          "filename": "20260315_doc01khcnrrmj3qyjz6ksjrn95v52_0350b649_experience-im-a-professional-chef-in-antarctica.mp3",
+          "processed_at": "2026-03-15T17:44:15Z",
+          "source_url": "https://read.readwise.io/read/01khcnrrmj3qyjz6ksjrn95v52",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "01kgqbn7kye3hmd8rrkfzzmvmk": {
+      "doc_id": "01kgqbn7kye3hmd8rrkfzzmvmk",
+      "title": "Nicola Sturgeon: Why I changed my mind about Gordon Brown",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kgqbn7kye3hmd8rrkfzzmvmk",
+      "fingerprint": "1aa0d34818c8bf8a7ede08c06cdd07585072fad2",
+      "processed_at": "2026-03-15T17:45:02Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kgqbn7kye3hmd8rrkfzzmvmk",
+          "part": 1,
+          "title": "Nicola Sturgeon: Why I changed my mind about Gordon Brown",
+          "description": "https://read.readwise.io/read/01kgqbn7kye3hmd8rrkfzzmvmk",
+          "guid": "reader-01kgqbn7kye3hmd8rrkfzzmvmk-1aa0d348",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kgqbn7kye3hmd8rrkfzzmvmk_1aa0d348_nicola-sturgeon-why-i-changed-my-mind-about-gordon-brown.mp3",
+          "length": 1817664,
+          "filename": "20260315_doc01kgqbn7kye3hmd8rrkfzzmvmk_1aa0d348_nicola-sturgeon-why-i-changed-my-mind-about-gordon-brown.mp3",
+          "processed_at": "2026-03-15T17:45:02Z",
+          "source_url": "https://read.readwise.io/read/01kgqbn7kye3hmd8rrkfzzmvmk",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "01kgkqpj66pgmfrx5c3cb0gjc9": {
+      "doc_id": "01kgkqpj66pgmfrx5c3cb0gjc9",
+      "title": "A Faith That Radiates: Contemplation, Integrity, and the Way of Jesus. A Contemplative Reflection on Matthew 5:15-20 for the 5th Sunday After Epiphany and Proper 5.",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kgkqpj66pgmfrx5c3cb0gjc9",
+      "fingerprint": "e576abc5e13fcb5c5686cc61091d4a6738616976",
+      "processed_at": "2026-03-15T17:46:10Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kgkqpj66pgmfrx5c3cb0gjc9",
+          "part": 1,
+          "title": "A Faith That Radiates: Contemplation, Integrity, and the Way of Jesus. A Contemplative Reflection on Matthew 5:15-20 for the 5th Sunday After Epiphany and Proper 5.",
+          "description": "https://read.readwise.io/read/01kgkqpj66pgmfrx5c3cb0gjc9",
+          "guid": "reader-01kgkqpj66pgmfrx5c3cb0gjc9-e576abc5",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kgkqpj66pgmfrx5c3cb0gjc9_e576abc5_a-faith-that-radiates-contemplation-integrity-and-the-way-of.mp3",
+          "length": 1749408,
+          "filename": "20260315_doc01kgkqpj66pgmfrx5c3cb0gjc9_e576abc5_a-faith-that-radiates-contemplation-integrity-and-the-way-of.mp3",
+          "processed_at": "2026-03-15T17:46:10Z",
+          "source_url": "https://read.readwise.io/read/01kgkqpj66pgmfrx5c3cb0gjc9",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }

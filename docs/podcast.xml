@@ -5,12 +5,39 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 15 Mar 2026 16:48:25 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 17:47:16 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>A Faith That Radiates: Contemplation, Integrity, and the Way of Jesus. A Contemplative Reflection on Matthew 5:15-20 for the 5th Sunday After Epiphany and Proper 5.</title>
+      <description>https://read.readwise.io/read/01kgkqpj66pgmfrx5c3cb0gjc9</description>
+      <guid>reader-01kgkqpj66pgmfrx5c3cb0gjc9-e576abc5</guid>
+      <pubDate>Sun, 15 Mar 2026 17:46:10 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kgkqpj66pgmfrx5c3cb0gjc9_e576abc5_a-faith-that-radiates-contemplation-integrity-and-the-way-of.mp3" length="1749408" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Nicola Sturgeon: Why I changed my mind about Gordon Brown</title>
+      <description>https://read.readwise.io/read/01kgqbn7kye3hmd8rrkfzzmvmk</description>
+      <guid>reader-01kgqbn7kye3hmd8rrkfzzmvmk-1aa0d348</guid>
+      <pubDate>Sun, 15 Mar 2026 17:45:02 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kgqbn7kye3hmd8rrkfzzmvmk_1aa0d348_nicola-sturgeon-why-i-changed-my-mind-about-gordon-brown.mp3" length="1817664" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Experience: I’m a professional chef in Antarctica</title>
+      <description>https://read.readwise.io/read/01khcnrrmj3qyjz6ksjrn95v52</description>
+      <guid>reader-01khcnrrmj3qyjz6ksjrn95v52-0350b649</guid>
+      <pubDate>Sun, 15 Mar 2026 17:44:15 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01khcnrrmj3qyjz6ksjrn95v52_0350b649_experience-im-a-professional-chef-in-antarctica.mp3" length="1239360" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Christliche Sexualmoral: "Gott hat sicher nichts gegen Sex"</title>
       <description>https://read.readwise.io/read/01kkq6aec8t7je2eg88j63w5vn</description>
