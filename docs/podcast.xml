@@ -5,12 +5,30 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 15 Mar 2026 19:42:13 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 20:48:08 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>Writer’s Diary</title>
+      <description>https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg</description>
+      <guid>reader-01kfbpabx5fv9cfqf2gx23xceg-6e377551</guid>
+      <pubDate>Sun, 15 Mar 2026 20:47:19 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kfbpabx5fv9cfqf2gx23xceg_6e377551_writers-diary.mp3" length="1303680" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Requiem</title>
+      <description>https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq</description>
+      <guid>reader-01kj0z47fewnpvmsa7nta9mrzq-bb0ac4e3</guid>
+      <pubDate>Sun, 15 Mar 2026 20:45:50 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kj0z47fewnpvmsa7nta9mrzq_bb0ac4e3_requiem.mp3" length="2420832" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>A Faith That Radiates: Contemplation, Integrity, and the Way of Jesus. A Contemplative Reflection on Matthew 5:15-20 for the 5th Sunday After Epiphany and Proper 5.</title>
       <description>https://read.readwise.io/read/01kgkqpj66pgmfrx5c3cb0gjc9</description>

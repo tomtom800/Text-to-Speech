@@ -168,6 +168,54 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kj0z47fewnpvmsa7nta9mrzq": {
+      "doc_id": "01kj0z47fewnpvmsa7nta9mrzq",
+      "title": "Requiem",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq",
+      "fingerprint": "bb0ac4e3b80cb3b0a3a027d1ba6632a08d7462eb",
+      "processed_at": "2026-03-15T20:45:50Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kj0z47fewnpvmsa7nta9mrzq",
+          "part": 1,
+          "title": "Requiem",
+          "description": "https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq",
+          "guid": "reader-01kj0z47fewnpvmsa7nta9mrzq-bb0ac4e3",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kj0z47fewnpvmsa7nta9mrzq_bb0ac4e3_requiem.mp3",
+          "length": 2420832,
+          "filename": "20260315_doc01kj0z47fewnpvmsa7nta9mrzq_bb0ac4e3_requiem.mp3",
+          "processed_at": "2026-03-15T20:45:50Z",
+          "source_url": "https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "01kfbpabx5fv9cfqf2gx23xceg": {
+      "doc_id": "01kfbpabx5fv9cfqf2gx23xceg",
+      "title": "Writer’s Diary",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg",
+      "fingerprint": "6e377551136716166c834e9c4939deec7631ab29",
+      "processed_at": "2026-03-15T20:47:19Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kfbpabx5fv9cfqf2gx23xceg",
+          "part": 1,
+          "title": "Writer’s Diary",
+          "description": "https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg",
+          "guid": "reader-01kfbpabx5fv9cfqf2gx23xceg-6e377551",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kfbpabx5fv9cfqf2gx23xceg_6e377551_writers-diary.mp3",
+          "length": 1303680,
+          "filename": "20260315_doc01kfbpabx5fv9cfqf2gx23xceg_6e377551_writers-diary.mp3",
+          "processed_at": "2026-03-15T20:47:19Z",
+          "source_url": "https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
