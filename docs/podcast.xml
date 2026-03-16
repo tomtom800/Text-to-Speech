@@ -5,12 +5,30 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 16 Mar 2026 15:18:38 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 17:22:26 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>The strange tale of Sigmund Freud’s begonia</title>
+      <description>https://read.readwise.io/read/01kdyr0wfrnpc8mxw7y3ysrdpy</description>
+      <guid>reader-01kdyr0wfrnpc8mxw7y3ysrdpy-99563c46</guid>
+      <pubDate>Mon, 16 Mar 2026 17:19:37 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kdyr0wfrnpc8mxw7y3ysrdpy_99563c46_the-strange-tale-of-sigmund-freuds-begonia.mp3" length="4248000" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>‘I wondered if I would be a coward or not’: five Ukrainian men on how war has changed them</title>
+      <description>https://read.readwise.io/read/01kgqc2d58t90dkkyhn60ka8xf</description>
+      <guid>reader-01kgqc2d58t90dkkyhn60ka8xf-0c68e1a5</guid>
+      <pubDate>Mon, 16 Mar 2026 17:16:56 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kgqc2d58t90dkkyhn60ka8xf_0c68e1a5_i-wondered-if-i-would-be-a-coward-or-not-five-ukrainian-men.mp3" length="3879168" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Writer’s Diary</title>
       <description>https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg</description>

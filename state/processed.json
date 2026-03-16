@@ -240,6 +240,54 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kgqc2d58t90dkkyhn60ka8xf": {
+      "doc_id": "01kgqc2d58t90dkkyhn60ka8xf",
+      "title": "‘I wondered if I would be a coward or not’: five Ukrainian men on how war has changed them",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kgqc2d58t90dkkyhn60ka8xf",
+      "fingerprint": "0c68e1a5b8bdc2ecb2302c32a80adc6e104bdc70",
+      "processed_at": "2026-03-16T17:16:56Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kgqc2d58t90dkkyhn60ka8xf",
+          "part": 1,
+          "title": "‘I wondered if I would be a coward or not’: five Ukrainian men on how war has changed them",
+          "description": "https://read.readwise.io/read/01kgqc2d58t90dkkyhn60ka8xf",
+          "guid": "reader-01kgqc2d58t90dkkyhn60ka8xf-0c68e1a5",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kgqc2d58t90dkkyhn60ka8xf_0c68e1a5_i-wondered-if-i-would-be-a-coward-or-not-five-ukrainian-men.mp3",
+          "length": 3879168,
+          "filename": "20260316_doc01kgqc2d58t90dkkyhn60ka8xf_0c68e1a5_i-wondered-if-i-would-be-a-coward-or-not-five-ukrainian-men.mp3",
+          "processed_at": "2026-03-16T17:16:56Z",
+          "source_url": "https://read.readwise.io/read/01kgqc2d58t90dkkyhn60ka8xf",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "01kdyr0wfrnpc8mxw7y3ysrdpy": {
+      "doc_id": "01kdyr0wfrnpc8mxw7y3ysrdpy",
+      "title": "The strange tale of Sigmund Freud’s begonia",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kdyr0wfrnpc8mxw7y3ysrdpy",
+      "fingerprint": "99563c46d2ab1944311f26c84a721ee3e1d056e2",
+      "processed_at": "2026-03-16T17:19:37Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kdyr0wfrnpc8mxw7y3ysrdpy",
+          "part": 1,
+          "title": "The strange tale of Sigmund Freud’s begonia",
+          "description": "https://read.readwise.io/read/01kdyr0wfrnpc8mxw7y3ysrdpy",
+          "guid": "reader-01kdyr0wfrnpc8mxw7y3ysrdpy-99563c46",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kdyr0wfrnpc8mxw7y3ysrdpy_99563c46_the-strange-tale-of-sigmund-freuds-begonia.mp3",
+          "length": 4248000,
+          "filename": "20260316_doc01kdyr0wfrnpc8mxw7y3ysrdpy_99563c46_the-strange-tale-of-sigmund-freuds-begonia.mp3",
+          "processed_at": "2026-03-16T17:19:37Z",
+          "source_url": "https://read.readwise.io/read/01kdyr0wfrnpc8mxw7y3ysrdpy",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
