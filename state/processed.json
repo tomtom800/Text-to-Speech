@@ -216,6 +216,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kktt1wwnx36k70tgsp6fw7zg": {
+      "doc_id": "01kktt1wwnx36k70tgsp6fw7zg",
+      "title": "Writer’s Diary",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg",
+      "fingerprint": "4325ef4247cd1b2aa346004e26ec308ed012e48f",
+      "processed_at": "2026-03-16T09:12:29Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kktt1wwnx36k70tgsp6fw7zg",
+          "part": 1,
+          "title": "Writer’s Diary",
+          "description": "https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg",
+          "guid": "reader-01kktt1wwnx36k70tgsp6fw7zg-4325ef42",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kktt1wwnx36k70tgsp6fw7zg_4325ef42_writers-diary.mp3",
+          "length": 1362912,
+          "filename": "20260316_doc01kktt1wwnx36k70tgsp6fw7zg_4325ef42_writers-diary.mp3",
+          "processed_at": "2026-03-16T09:12:29Z",
+          "source_url": "https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }

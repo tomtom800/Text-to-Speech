@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 16 Mar 2026 07:47:57 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 09:13:20 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>Writer’s Diary</title>
+      <description>https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg</description>
+      <guid>reader-01kktt1wwnx36k70tgsp6fw7zg-4325ef42</guid>
+      <pubDate>Mon, 16 Mar 2026 09:12:29 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kktt1wwnx36k70tgsp6fw7zg_4325ef42_writers-diary.mp3" length="1362912" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Writer’s Diary</title>
       <description>https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg</description>
