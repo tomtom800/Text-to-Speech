@@ -5,12 +5,30 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 17 Mar 2026 21:53:39 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 22:55:26 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>The Man Who Would Go Anywhere</title>
+      <description>https://read.readwise.io/read/01kkyx8rw8ccpn9fx8gyamv7gp</description>
+      <guid>reader-01kkyx8rw8ccpn9fx8gyamv7gp-6f941307</guid>
+      <pubDate>Tue, 17 Mar 2026 22:52:44 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260317_doc01kkyx8rw8ccpn9fx8gyamv7gp_6f941307_the-man-who-would-go-anywhere.mp3" length="3971616" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>63 responses to “Hopko on the Cross of Christ”</title>
+      <description>https://read.readwise.io/read/01kkyy7jgq1qst2eyz29zbz867</description>
+      <guid>reader-01kkyy7jgq1qst2eyz29zbz867-86a440c8</guid>
+      <pubDate>Tue, 17 Mar 2026 22:51:51 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260317_doc01kkyy7jgq1qst2eyz29zbz867_86a440c8_63-responses-to-hopko-on-the-cross-of-christ.mp3" length="1292640" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>The strange tale of Sigmund Freud’s begonia</title>
       <description>https://read.readwise.io/read/01kdyr0wfrnpc8mxw7y3ysrdpy</description>

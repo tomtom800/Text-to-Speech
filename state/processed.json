@@ -288,6 +288,54 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kkyy7jgq1qst2eyz29zbz867": {
+      "doc_id": "01kkyy7jgq1qst2eyz29zbz867",
+      "title": "63 responses to “Hopko on the Cross of Christ”",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kkyy7jgq1qst2eyz29zbz867",
+      "fingerprint": "86a440c8fd7a49db2c4aa648fbb8260b407df519",
+      "processed_at": "2026-03-17T22:51:51Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kkyy7jgq1qst2eyz29zbz867",
+          "part": 1,
+          "title": "63 responses to “Hopko on the Cross of Christ”",
+          "description": "https://read.readwise.io/read/01kkyy7jgq1qst2eyz29zbz867",
+          "guid": "reader-01kkyy7jgq1qst2eyz29zbz867-86a440c8",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260317_doc01kkyy7jgq1qst2eyz29zbz867_86a440c8_63-responses-to-hopko-on-the-cross-of-christ.mp3",
+          "length": 1292640,
+          "filename": "20260317_doc01kkyy7jgq1qst2eyz29zbz867_86a440c8_63-responses-to-hopko-on-the-cross-of-christ.mp3",
+          "processed_at": "2026-03-17T22:51:51Z",
+          "source_url": "https://read.readwise.io/read/01kkyy7jgq1qst2eyz29zbz867",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "01kkyx8rw8ccpn9fx8gyamv7gp": {
+      "doc_id": "01kkyx8rw8ccpn9fx8gyamv7gp",
+      "title": "The Man Who Would Go Anywhere",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kkyx8rw8ccpn9fx8gyamv7gp",
+      "fingerprint": "6f9413071ff4e980f3c9b1c0de202ecc0ef470d1",
+      "processed_at": "2026-03-17T22:52:44Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kkyx8rw8ccpn9fx8gyamv7gp",
+          "part": 1,
+          "title": "The Man Who Would Go Anywhere",
+          "description": "https://read.readwise.io/read/01kkyx8rw8ccpn9fx8gyamv7gp",
+          "guid": "reader-01kkyx8rw8ccpn9fx8gyamv7gp-6f941307",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260317_doc01kkyx8rw8ccpn9fx8gyamv7gp_6f941307_the-man-who-would-go-anywhere.mp3",
+          "length": 3971616,
+          "filename": "20260317_doc01kkyx8rw8ccpn9fx8gyamv7gp_6f941307_the-man-who-would-go-anywhere.mp3",
+          "processed_at": "2026-03-17T22:52:44Z",
+          "source_url": "https://read.readwise.io/read/01kkyx8rw8ccpn9fx8gyamv7gp",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
