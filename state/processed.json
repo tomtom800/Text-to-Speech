@@ -336,6 +336,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kkzw7gzsrmtd6zgrqk2d0gkz": {
+      "doc_id": "01kkzw7gzsrmtd6zgrqk2d0gkz",
+      "title": "On the trail of the Romantics in the Welsh borders",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kkzw7gzsrmtd6zgrqk2d0gkz",
+      "fingerprint": "eda717cb8870f098f9de77e30fd0997d41a225f1",
+      "processed_at": "2026-03-18T07:17:05Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kkzw7gzsrmtd6zgrqk2d0gkz",
+          "part": 1,
+          "title": "On the trail of the Romantics in the Welsh borders",
+          "description": "https://read.readwise.io/read/01kkzw7gzsrmtd6zgrqk2d0gkz",
+          "guid": "reader-01kkzw7gzsrmtd6zgrqk2d0gkz-eda717cb",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260318_doc01kkzw7gzsrmtd6zgrqk2d0gkz_eda717cb_on-the-trail-of-the-romantics-in-the-welsh-borders.mp3",
+          "length": 1652640,
+          "filename": "20260318_doc01kkzw7gzsrmtd6zgrqk2d0gkz_eda717cb_on-the-trail-of-the-romantics-in-the-welsh-borders.mp3",
+          "processed_at": "2026-03-18T07:17:05Z",
+          "source_url": "https://read.readwise.io/read/01kkzw7gzsrmtd6zgrqk2d0gkz",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }

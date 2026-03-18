@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 18 Mar 2026 05:40:50 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 07:18:05 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>On the trail of the Romantics in the Welsh borders</title>
+      <description>https://read.readwise.io/read/01kkzw7gzsrmtd6zgrqk2d0gkz</description>
+      <guid>reader-01kkzw7gzsrmtd6zgrqk2d0gkz-eda717cb</guid>
+      <pubDate>Wed, 18 Mar 2026 07:17:05 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260318_doc01kkzw7gzsrmtd6zgrqk2d0gkz_eda717cb_on-the-trail-of-the-romantics-in-the-welsh-borders.mp3" length="1652640" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>The Man Who Would Go Anywhere</title>
       <description>https://read.readwise.io/read/01kkyx8rw8ccpn9fx8gyamv7gp</description>
