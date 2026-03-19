@@ -360,6 +360,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01km2gw0rxwk0bw4q4jdag274y": {
+      "doc_id": "01km2gw0rxwk0bw4q4jdag274y",
+      "title": "In search of Banksy, Reuters found the artist took on a new identity",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01km2gw0rxwk0bw4q4jdag274y",
+      "fingerprint": "49e0a878b9883e341b74c3db6c659a918d9da493",
+      "processed_at": "2026-03-19T07:55:11Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01km2gw0rxwk0bw4q4jdag274y",
+          "part": 1,
+          "title": "In search of Banksy, Reuters found the artist took on a new identity",
+          "description": "https://read.readwise.io/read/01km2gw0rxwk0bw4q4jdag274y",
+          "guid": "reader-01km2gw0rxwk0bw4q4jdag274y-49e0a878",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260319_doc01km2gw0rxwk0bw4q4jdag274y_49e0a878_in-search-of-banksy-reuters-found-the-artist-took-on-a-new-i.mp3",
+          "length": 16860000,
+          "filename": "20260319_doc01km2gw0rxwk0bw4q4jdag274y_49e0a878_in-search-of-banksy-reuters-found-the-artist-took-on-a-new-i.mp3",
+          "processed_at": "2026-03-19T07:55:11Z",
+          "source_url": "https://read.readwise.io/read/01km2gw0rxwk0bw4q4jdag274y",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
