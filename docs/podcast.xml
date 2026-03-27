@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 27 Mar 2026 07:34:33 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2026 09:08:49 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>Language, Permaculture, and the Energy of Connection</title>
+      <description>https://read.readwise.io/read/01kmq6m93tj84j391hampsgday</description>
+      <guid>reader-01kmq6m93tj84j391hampsgday-d555c65c</guid>
+      <pubDate>Fri, 27 Mar 2026 09:07:44 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260327_doc01kmq6m93tj84j391hampsgday_d555c65c_language-permaculture-and-the-energy-of-connection.mp3" length="1769088" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>In search of Banksy, Reuters found the artist took on a new identity</title>
       <description>https://read.readwise.io/read/01km2gw0rxwk0bw4q4jdag274y</description>

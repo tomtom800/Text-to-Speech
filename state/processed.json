@@ -384,6 +384,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01kmq6m93tj84j391hampsgday": {
+      "doc_id": "01kmq6m93tj84j391hampsgday",
+      "title": "Language, Permaculture, and the Energy of Connection",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01kmq6m93tj84j391hampsgday",
+      "fingerprint": "d555c65caa7d8487ddb7fbb05b4b5d7637f7a293",
+      "processed_at": "2026-03-27T09:07:44Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01kmq6m93tj84j391hampsgday",
+          "part": 1,
+          "title": "Language, Permaculture, and the Energy of Connection",
+          "description": "https://read.readwise.io/read/01kmq6m93tj84j391hampsgday",
+          "guid": "reader-01kmq6m93tj84j391hampsgday-d555c65c",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260327_doc01kmq6m93tj84j391hampsgday_d555c65c_language-permaculture-and-the-energy-of-connection.mp3",
+          "length": 1769088,
+          "filename": "20260327_doc01kmq6m93tj84j391hampsgday_d555c65c_language-permaculture-and-the-energy-of-connection.mp3",
+          "processed_at": "2026-03-27T09:07:44Z",
+          "source_url": "https://read.readwise.io/read/01kmq6m93tj84j391hampsgday",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
