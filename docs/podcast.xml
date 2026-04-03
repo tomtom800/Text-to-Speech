@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 03 Apr 2026 03:26:56 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 05:51:16 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>When I set out to write a book about young people turning to religion in this age of uncertainty, I had no idea of the questions it would raise – about faith, forgiveness and ultimately love</title>
+      <description>https://read.readwise.io/read/01kn8wpsj8wx3ey60hg87ann44</description>
+      <guid>reader-01kn8wpsj8wx3ey60hg87ann44-fda3110e</guid>
+      <pubDate>Fri, 03 Apr 2026 05:49:15 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260403_doc01kn8wpsj8wx3ey60hg87ann44_fda3110e_when-i-set-out-to-write-a-book-about-young-people-turning-to.mp3" length="3155424" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>Language, Permaculture, and the Energy of Connection</title>
       <description>https://read.readwise.io/read/01kmq6m93tj84j391hampsgday</description>
