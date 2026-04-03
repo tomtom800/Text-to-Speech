@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 03 Apr 2026 07:37:03 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 09:10:54 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>7 thoughts on “I Live My Life a Quarter Century at a Time”</title>
+      <description>https://read.readwise.io/read/01kn94pxve7jyvm37vzk3gbtq6</description>
+      <guid>reader-01kn94pxve7jyvm37vzk3gbtq6-43eefdb0</guid>
+      <pubDate>Fri, 03 Apr 2026 09:09:45 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260403_doc01kn94pxve7jyvm37vzk3gbtq6_43eefdb0_7-thoughts-on-i-live-my-life-a-quarter-century-at-a-time.mp3" length="1825056" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>When I set out to write a book about young people turning to religion in this age of uncertainty, I had no idea of the questions it would raise – about faith, forgiveness and ultimately love</title>
       <description>https://read.readwise.io/read/01kn8wpsj8wx3ey60hg87ann44</description>
