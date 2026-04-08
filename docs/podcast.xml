@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 08 Apr 2026 11:14:57 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 12:05:23 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>ASD, autism: diagnosis, or lived experience?</title>
+      <description>https://read.readwise.io/read/01knpep6heaa8wpxnmjsb27k1b</description>
+      <guid>reader-01knpep6heaa8wpxnmjsb27k1b-11d434f0</guid>
+      <pubDate>Wed, 08 Apr 2026 12:03:11 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260408_doc01knpep6heaa8wpxnmjsb27k1b_11d434f0_asd-autism-diagnosis-or-lived-experience.mp3" length="3272928" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>7 thoughts on “I Live My Life a Quarter Century at a Time”</title>
       <description>https://read.readwise.io/read/01kn94pxve7jyvm37vzk3gbtq6</description>

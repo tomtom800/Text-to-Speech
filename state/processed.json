@@ -456,6 +456,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01knpep6heaa8wpxnmjsb27k1b": {
+      "doc_id": "01knpep6heaa8wpxnmjsb27k1b",
+      "title": "ASD, autism: diagnosis, or lived experience?",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01knpep6heaa8wpxnmjsb27k1b",
+      "fingerprint": "11d434f036974293dd8b1b304276ac6c3188b559",
+      "processed_at": "2026-04-08T12:03:11Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01knpep6heaa8wpxnmjsb27k1b",
+          "part": 1,
+          "title": "ASD, autism: diagnosis, or lived experience?",
+          "description": "https://read.readwise.io/read/01knpep6heaa8wpxnmjsb27k1b",
+          "guid": "reader-01knpep6heaa8wpxnmjsb27k1b-11d434f0",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260408_doc01knpep6heaa8wpxnmjsb27k1b_11d434f0_asd-autism-diagnosis-or-lived-experience.mp3",
+          "length": 3272928,
+          "filename": "20260408_doc01knpep6heaa8wpxnmjsb27k1b_11d434f0_asd-autism-diagnosis-or-lived-experience.mp3",
+          "processed_at": "2026-04-08T12:03:11Z",
+          "source_url": "https://read.readwise.io/read/01knpep6heaa8wpxnmjsb27k1b",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
