@@ -5,12 +5,30 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 10 Apr 2026 03:40:38 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2026 06:08:19 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>The Lowdown on Beauty</title>
+      <description>https://read.readwise.io/read/01kntzpg1rr2qbrtzgm65r9vsa</description>
+      <guid>reader-01kntzpg1rr2qbrtzgm65r9vsa-0911dc7d</guid>
+      <pubDate>Fri, 10 Apr 2026 06:07:49 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01kntzpg1rr2qbrtzgm65r9vsa_0911dc7d_the-lowdown-on-beauty.mp3" length="784704" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>What Neighbors Do</title>
+      <description>https://read.readwise.io/read/01kntzxy0js6b284421e78ckas</description>
+      <guid>reader-01kntzxy0js6b284421e78ckas-806c5edd</guid>
+      <pubDate>Fri, 10 Apr 2026 06:06:41 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01kntzxy0js6b284421e78ckas_806c5edd_what-neighbors-do.mp3" length="1752288" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>ASD, autism: diagnosis, or lived experience?</title>
       <description>https://read.readwise.io/read/01knpep6heaa8wpxnmjsb27k1b</description>
