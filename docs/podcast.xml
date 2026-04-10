@@ -5,12 +5,21 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 10 Apr 2026 20:55:39 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2026 21:55:09 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>8 responses to “Good Friday and Unbelief”</title>
+      <description>https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c</description>
+      <guid>reader-01knwnp4jvc7ak9sz9504xp59c-65f4a492</guid>
+      <pubDate>Fri, 10 Apr 2026 21:54:03 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01knwnp4jvc7ak9sz9504xp59c_65f4a492_8-responses-to-good-friday-and-unbelief.mp3" length="1688832" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>The Lowdown on Beauty</title>
       <description>https://read.readwise.io/read/01kntzpg1rr2qbrtzgm65r9vsa</description>

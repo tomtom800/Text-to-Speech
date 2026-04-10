@@ -528,6 +528,30 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "01knwnp4jvc7ak9sz9504xp59c": {
+      "doc_id": "01knwnp4jvc7ak9sz9504xp59c",
+      "title": "8 responses to “Good Friday and Unbelief”",
+      "queue_tag": "tts-en",
+      "source_url": "https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c",
+      "fingerprint": "65f4a492bb120fabe388ce99e552b394bcbc2aab",
+      "processed_at": "2026-04-10T21:54:03Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "01knwnp4jvc7ak9sz9504xp59c",
+          "part": 1,
+          "title": "8 responses to “Good Friday and Unbelief”",
+          "description": "https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c",
+          "guid": "reader-01knwnp4jvc7ak9sz9504xp59c-65f4a492",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01knwnp4jvc7ak9sz9504xp59c_65f4a492_8-responses-to-good-friday-and-unbelief.mp3",
+          "length": 1688832,
+          "filename": "20260410_doc01knwnp4jvc7ak9sz9504xp59c_65f4a492_8-responses-to-good-friday-and-unbelief.mp3",
+          "processed_at": "2026-04-10T21:54:03Z",
+          "source_url": "https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
