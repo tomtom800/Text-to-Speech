@@ -5,36 +5,63 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Readwise Reader tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 25 Jun 2026 11:49:40 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 15:15:24 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Readwise Reader tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
     <item>
-      <title>8 responses to “Good Friday and Unbelief”</title>
-      <description>https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c</description>
-      <guid>reader-01knwnp4jvc7ak9sz9504xp59c-65f4a492</guid>
-      <pubDate>Fri, 10 Apr 2026 21:54:03 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01knwnp4jvc7ak9sz9504xp59c_65f4a492_8-responses-to-good-friday-and-unbelief.mp3" length="1688832" type="audio/mpeg" />
+      <title>One Owl's Second Chance</title>
+      <description>https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze</description>
+      <guid>reader-01khyhfps06fn30f1fjhq24cze-8a333986</guid>
+      <pubDate>Thu, 25 Jun 2026 15:14:26 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260625_doc01khyhfps06fn30f1fjhq24cze_8a333986_one-owls-second-chance.mp3" length="1518528" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Requiem</title>
+      <description>https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq</description>
+      <guid>reader-01kj0z47fewnpvmsa7nta9mrzq-e4cf83da</guid>
+      <pubDate>Thu, 25 Jun 2026 15:12:57 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260625_doc01kj0z47fewnpvmsa7nta9mrzq_e4cf83da_requiem.mp3" length="2385984" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Writer’s Diary</title>
+      <description>https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg</description>
+      <guid>reader-01kktt1wwnx36k70tgsp6fw7zg-c90b9385</guid>
+      <pubDate>Thu, 25 Jun 2026 15:12:05 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260625_doc01kktt1wwnx36k70tgsp6fw7zg_c90b9385_writers-diary.mp3" length="1382880" type="audio/mpeg" />
       <itunes:author>Tom Selmes</itunes:author>
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
       <title>The Lowdown on Beauty</title>
       <description>https://read.readwise.io/read/01kntzpg1rr2qbrtzgm65r9vsa</description>
-      <guid>reader-01kntzpg1rr2qbrtzgm65r9vsa-0911dc7d</guid>
-      <pubDate>Fri, 10 Apr 2026 06:07:49 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01kntzpg1rr2qbrtzgm65r9vsa_0911dc7d_the-lowdown-on-beauty.mp3" length="784704" type="audio/mpeg" />
+      <guid>reader-01kntzpg1rr2qbrtzgm65r9vsa-c9474c97</guid>
+      <pubDate>Thu, 25 Jun 2026 15:11:35 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260625_doc01kntzpg1rr2qbrtzgm65r9vsa_c9474c97_the-lowdown-on-beauty.mp3" length="807552" type="audio/mpeg" />
       <itunes:author>Tom Selmes</itunes:author>
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
       <title>What Neighbors Do</title>
       <description>https://read.readwise.io/read/01kntzxy0js6b284421e78ckas</description>
-      <guid>reader-01kntzxy0js6b284421e78ckas-806c5edd</guid>
-      <pubDate>Fri, 10 Apr 2026 06:06:41 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01kntzxy0js6b284421e78ckas_806c5edd_what-neighbors-do.mp3" length="1752288" type="audio/mpeg" />
+      <guid>reader-01kntzxy0js6b284421e78ckas-881f2f15</guid>
+      <pubDate>Thu, 25 Jun 2026 15:10:29 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260625_doc01kntzxy0js6b284421e78ckas_881f2f15_what-neighbors-do.mp3" length="1724256" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>8 responses to “Good Friday and Unbelief”</title>
+      <description>https://read.readwise.io/read/01knwnp4jvc7ak9sz9504xp59c</description>
+      <guid>reader-01knwnp4jvc7ak9sz9504xp59c-65f4a492</guid>
+      <pubDate>Fri, 10 Apr 2026 21:54:03 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260410_doc01knwnp4jvc7ak9sz9504xp59c_65f4a492_8-responses-to-good-friday-and-unbelief.mp3" length="1688832" type="audio/mpeg" />
       <itunes:author>Tom Selmes</itunes:author>
       <itunes:explicit>false</itunes:explicit>
     </item>
@@ -130,28 +157,10 @@
     </item>
     <item>
       <title>Writer’s Diary</title>
-      <description>https://read.readwise.io/read/01kktt1wwnx36k70tgsp6fw7zg</description>
-      <guid>reader-01kktt1wwnx36k70tgsp6fw7zg-4325ef42</guid>
-      <pubDate>Mon, 16 Mar 2026 09:12:29 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260316_doc01kktt1wwnx36k70tgsp6fw7zg_4325ef42_writers-diary.mp3" length="1362912" type="audio/mpeg" />
-      <itunes:author>Tom Selmes</itunes:author>
-      <itunes:explicit>false</itunes:explicit>
-    </item>
-    <item>
-      <title>Writer’s Diary</title>
       <description>https://read.readwise.io/read/01kfbpabx5fv9cfqf2gx23xceg</description>
       <guid>reader-01kfbpabx5fv9cfqf2gx23xceg-6e377551</guid>
       <pubDate>Sun, 15 Mar 2026 20:47:19 GMT</pubDate>
       <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kfbpabx5fv9cfqf2gx23xceg_6e377551_writers-diary.mp3" length="1303680" type="audio/mpeg" />
-      <itunes:author>Tom Selmes</itunes:author>
-      <itunes:explicit>false</itunes:explicit>
-    </item>
-    <item>
-      <title>Requiem</title>
-      <description>https://read.readwise.io/read/01kj0z47fewnpvmsa7nta9mrzq</description>
-      <guid>reader-01kj0z47fewnpvmsa7nta9mrzq-bb0ac4e3</guid>
-      <pubDate>Sun, 15 Mar 2026 20:45:50 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260315_doc01kj0z47fewnpvmsa7nta9mrzq_bb0ac4e3_requiem.mp3" length="2420832" type="audio/mpeg" />
       <itunes:author>Tom Selmes</itunes:author>
       <itunes:explicit>false</itunes:explicit>
     </item>
@@ -197,15 +206,6 @@
       <guid>reader-01kh8bpvw59h5xy8tbk7vqksts-3bbae6b2</guid>
       <pubDate>Sat, 14 Mar 2026 17:53:39 GMT</pubDate>
       <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01kh8bpvw59h5xy8tbk7vqksts_3bbae6b2_apocalypse-no-how-almost-everything-we-thought-we-knew-about.mp3" length="7374816" type="audio/mpeg" />
-      <itunes:author>Tom Selmes</itunes:author>
-      <itunes:explicit>false</itunes:explicit>
-    </item>
-    <item>
-      <title>One Owl's Second Chance</title>
-      <description>https://read.readwise.io/read/01khyhfps06fn30f1fjhq24cze</description>
-      <guid>reader-01khyhfps06fn30f1fjhq24cze-f17b9d88</guid>
-      <pubDate>Sat, 14 Mar 2026 17:52:41 GMT</pubDate>
-      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260314_doc01khyhfps06fn30f1fjhq24cze_f17b9d88_one-owls-second-chance.mp3" length="1511616" type="audio/mpeg" />
       <itunes:author>Tom Selmes</itunes:author>
       <itunes:explicit>false</itunes:explicit>
     </item>
