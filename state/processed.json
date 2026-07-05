@@ -575,6 +575,31 @@
         }
       ],
       "source_provider": "readwise"
+    },
+    "quickreads:0e98e97a-b3e3-4397-9d9d-5b7122b28791": {
+      "doc_id": "0e98e97a-b3e3-4397-9d9d-5b7122b28791",
+      "source_provider": "quickreads",
+      "title": "‘Act on the evidence outside the window’: Andy Burnham urged to stick to net zero targets if he becomes PM",
+      "queue_tag": "tts-en",
+      "source_url": "https://www.theguardian.com/environment/2026/jun/25/andy-burnham-net-zero-targets",
+      "fingerprint": "34eac75e883dae0d109e928a01e275acc49357d8",
+      "processed_at": "2026-07-05T18:22:48Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "0e98e97a-b3e3-4397-9d9d-5b7122b28791",
+          "part": 1,
+          "title": "‘Act on the evidence outside the window’: Andy Burnham urged to stick to net zero targets if he becomes PM",
+          "description": "https://www.theguardian.com/environment/2026/jun/25/andy-burnham-net-zero-targets",
+          "guid": "quickreads-0e98e97a-b3e3-4397-9d9d-5b7122b28791-34eac75e",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_doc0e98e97a-b3e3-4397-9d9d-5b7122b28791_34eac75e_act-on-the-evidence-outside-the-window-andy-burnham-urged-to.mp3",
+          "length": 1617120,
+          "filename": "20260705_quickreads_doc0e98e97a-b3e3-4397-9d9d-5b7122b28791_34eac75e_act-on-the-evidence-outside-the-window-andy-burnham-urged-to.mp3",
+          "processed_at": "2026-07-05T18:22:48Z",
+          "source_url": "https://www.theguardian.com/environment/2026/jun/25/andy-burnham-net-zero-targets",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
