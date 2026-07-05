@@ -34,9 +34,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run tests
+        env:
+          QUICK_READS_API_KEY: test-key
+          GOOGLE_TTS_API_KEY: test-key
+        run: |
+          python -m unittest discover -s tests
+
       - name: Build feed
         env:
-          READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
+          QUICK_READS_API_KEY: ${{ secrets.QUICK_READS_API_KEY }}
           GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
           PODCAST_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
           PODCAST_IMAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/image.png

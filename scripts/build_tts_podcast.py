@@ -18,10 +18,10 @@ from bs4 import BeautifulSoup
 # Config
 # ==========
 
-READER_TOKEN = os.environ["READWISE_TOKEN"]
+QUICK_READS_API_KEY = os.environ["QUICK_READS_API_KEY"]
 GOOGLE_TTS_API_KEY = os.environ["GOOGLE_TTS_API_KEY"]
 
-READER_LIST_URL = "https://readwise.io/api/v3/list/"
+QUICK_READS_API_URL = "https://quickreads.app/api"
 GOOGLE_TTS_URL = os.environ.get(
     "GOOGLE_TTS_URL",
     "https://texttospeech.googleapis.com/v1/text:synthesize",
@@ -35,7 +35,7 @@ PODCAST_XML_PATH = SITE_ROOT / "podcast.xml"
 PODCAST_TITLE = os.environ.get("PODCAST_TITLE", "Personal TTS Podcast")
 PODCAST_BASE_URL = os.environ.get("PODCAST_BASE_URL", "https://USERNAME.github.io/tts-podcast/").rstrip("/") + "/"
 PODCAST_DESCRIPTION = os.environ.get(
-    "PODCAST_DESCRIPTION", "Personal TTS feed generated from Readwise Reader tags."
+    "PODCAST_DESCRIPTION", "Personal TTS feed generated from Quick Reads tags."
 )
 PODCAST_LANGUAGE = os.environ.get("PODCAST_LANGUAGE", "en-gb")
 PODCAST_AUTHOR = os.environ.get("PODCAST_AUTHOR", "Tom Selmes")
@@ -54,7 +54,7 @@ MAX_DOCS_PER_RUN = int(os.environ.get("MAX_DOCS_PER_RUN", "25"))
 RETAIN_MAX_ITEMS = int(os.environ.get("RETAIN_MAX_ITEMS", "200"))
 PUBLISH_MODE = os.environ.get("PUBLISH_MODE", "combined").strip().lower()
 
-READWISE_RETRY_ATTEMPTS = int(os.environ.get("READWISE_RETRY_ATTEMPTS", "4"))
+QUICK_READS_RETRY_ATTEMPTS = int(os.environ.get("QUICK_READS_RETRY_ATTEMPTS", "4"))
 TTS_RETRY_ATTEMPTS = int(os.environ.get("TTS_RETRY_ATTEMPTS", "3"))
 
 VALID_PUBLISH_MODES = {"split", "combined"}
@@ -418,16 +418,31 @@ def file_size(path: pathlib.Path) -> int:
 # ==========
 
 
+def source_key(provider: str, doc_id: str) -> str:
+    return f"{provider}:{doc_id}"
+
+
 def empty_state() -> Dict[str, Any]:
-    return {"version": 2, "docs": {}}
+    return {"version": 3, "docs": {}}
 
 
 
 def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
     state = empty_state()
 
-    if raw.get("version") == 2 and isinstance(raw.get("docs"), dict):
+    if raw.get("version") == 3 and isinstance(raw.get("docs"), dict):
         state["docs"] = raw["docs"]
+        normalize_episode_titles_in_state(state)
+        normalize_publish_modes_in_state(state)
+        return state
+
+    if raw.get("version") == 2 and isinstance(raw.get("docs"), dict):
+        for doc_id, record in raw["docs"].items():
+            if not isinstance(record, dict):
+                continue
+            migrated = dict(record)
+            migrated["source_provider"] = "readwise"
+            state["docs"][source_key("readwise", str(doc_id))] = migrated
         normalize_episode_titles_in_state(state)
         normalize_publish_modes_in_state(state)
         return state
@@ -438,8 +453,9 @@ def normalize_state(raw: Dict[str, Any]) -> Dict[str, Any]:
         for doc_id, record in processed.items():
             if not isinstance(record, dict):
                 continue
-            state["docs"][str(doc_id)] = {
+            state["docs"][source_key("readwise", str(doc_id))] = {
                 "doc_id": str(doc_id),
+                "source_provider": "readwise",
                 "title": record.get("title", "Untitled"),
                 "queue_tag": record.get("queue_tag", ""),
                 "source_url": record.get("source_url", ""),
@@ -502,42 +518,70 @@ def remove_doc_assets(doc_entry: Dict[str, Any]) -> None:
 
 
 # ==========
-# Readwise
+# Quick Reads
 # ==========
 
 
-def reader_headers() -> Dict[str, str]:
-    return {"Authorization": f"Token {READER_TOKEN}"}
+def quick_reads_headers() -> Dict[str, str]:
+    return {"Authorization": f"Bearer {QUICK_READS_API_KEY}"}
 
 
-
-def fetch_docs_by_tag(session: requests.Session, tag: str) -> List[Dict[str, Any]]:
-    docs: List[Dict[str, Any]] = []
-    next_page: Optional[str] = None
+def fetch_article_summaries(session: requests.Session, page_size: int = 50) -> List[Dict[str, Any]]:
+    articles: List[Dict[str, Any]] = []
+    seen_ids: Set[str] = set()
+    offset = 0
 
     while True:
-        params: Dict[str, Any] = {"tag": tag, "withHtmlContent": "true"}
-        if next_page:
-            params["pageCursor"] = next_page
-
         response = request_with_retry(
             session=session,
             method="GET",
-            url=READER_LIST_URL,
-            headers=reader_headers(),
-            params=params,
+            url=f"{QUICK_READS_API_URL}/articles",
+            headers=quick_reads_headers(),
+            params={"archived": "false", "limit": page_size, "offset": offset},
             timeout=60,
-            attempts=READWISE_RETRY_ATTEMPTS,
+            attempts=QUICK_READS_RETRY_ATTEMPTS,
         )
         response.raise_for_status()
         data = response.json()
+        if not isinstance(data, list):
+            raise RuntimeError("Quick Reads list response must be a JSON array")
 
-        docs.extend(data.get("results", []))
-        next_page = data.get("nextPageCursor")
-        if not next_page:
+        for article in data:
+            if not isinstance(article, dict) or not article.get("id"):
+                raise RuntimeError("Quick Reads list response contains an invalid article")
+            article_id = str(article["id"])
+            if article_id not in seen_ids:
+                seen_ids.add(article_id)
+                articles.append(article)
+
+        if len(data) < page_size:
             break
+        offset += len(data)
 
-    return docs
+    return articles
+
+
+def fetch_article(session: requests.Session, summary: Dict[str, Any]) -> Dict[str, Any]:
+    article_id = str(summary["id"])
+    response = request_with_retry(
+        session=session,
+        method="GET",
+        url=f"{QUICK_READS_API_URL}/articles/{article_id}",
+        headers=quick_reads_headers(),
+        params={},
+        timeout=60,
+        attempts=QUICK_READS_RETRY_ATTEMPTS,
+    )
+    response.raise_for_status()
+    data = response.json()
+    if not isinstance(data, dict) or str(data.get("id", "")) != article_id:
+        raise RuntimeError(f"Quick Reads returned an invalid article for {article_id}")
+
+    article = dict(summary)
+    article.update(data)
+    if "tags" not in data:
+        article["tags"] = summary.get("tags", [])
+    return article
 
 
 # ==========
@@ -622,8 +666,8 @@ def build_feed(items: List[Dict[str, Any]]) -> None:
 # ==========
 
 
-def choose_queue_tag(doc: Dict[str, Any], fetched_tags: Set[str]) -> Optional[str]:
-    doc_tags = extract_doc_tags(doc) | fetched_tags
+def choose_queue_tag(doc: Dict[str, Any]) -> Optional[str]:
+    doc_tags = extract_doc_tags(doc)
     has_en = "tts-en" in doc_tags
     has_de = "tts-de" in doc_tags
 
@@ -648,7 +692,7 @@ def make_filename(
     date_prefix = timestamp.strftime("%Y%m%d")
     fp8 = fingerprint[:8]
     slug = slugify(title)
-    basename = f"{date_prefix}_doc{doc_id}_{fp8}_{slug}"
+    basename = f"{date_prefix}_quickreads_doc{doc_id}_{fp8}_{slug}"
     if temporary:
         basename += "_tmp"
     if part_index is not None:
@@ -664,18 +708,19 @@ def process_doc(
     state: Dict[str, Any],
 ) -> Tuple[str, int]:
     doc_id = str(doc["id"])
+    state_key = source_key("quickreads", doc_id)
     cfg = TAG_CONFIG[queue_tag]
 
     title = (doc.get("title") or "Untitled").strip()
     source_url = doc.get("url") or ""
-    html_content = doc.get("html_content") or doc.get("htmlContent") or ""
+    html_content = "" if doc.get("type") == "link" else (doc.get("content") or "")
 
     clean_text = clean_html_to_speech_text(html_content, fallback_title=title, source_url=source_url)
     if len(clean_text.strip()) < MIN_TEXT_CHARS:
         return "too_short", 0
 
     fingerprint = sha1_text(clean_text)
-    existing = state["docs"].get(doc_id)
+    existing = state["docs"].get(state_key)
     existing_publish_mode = normalize_publish_mode(str(existing.get("publish_mode", ""))) if existing else "split"
     if existing and existing.get("fingerprint") == fingerprint and existing_publish_mode == PUBLISH_MODE:
         return "unchanged", 0
@@ -688,7 +733,7 @@ def process_doc(
     processed_dt = iso_to_dt(processed_at)
 
     parts: List[Dict[str, Any]] = []
-    description = source_url or f"Generated from Readwise Reader item {doc_id}"
+    description = source_url or f"Generated from Quick Reads item {doc_id}"
 
     if PUBLISH_MODE == "split":
         for idx, chunk in enumerate(chunks, start=1):
@@ -712,7 +757,7 @@ def process_doc(
                 attempts=TTS_RETRY_ATTEMPTS,
             )
 
-            guid = f"reader-{doc_id}-{fingerprint[:8]}-part-{idx}"
+            guid = f"quickreads-{doc_id}-{fingerprint[:8]}-part-{idx}"
 
             parts.append(
                 {
@@ -773,7 +818,7 @@ def process_doc(
                 "part": 1,
                 "title": title,
                 "description": description,
-                "guid": f"reader-{doc_id}-{fingerprint[:8]}",
+                "guid": f"quickreads-{doc_id}-{fingerprint[:8]}",
                 "url": build_audio_url(final_filename),
                 "length": file_size(final_out_path),
                 "filename": final_filename,
@@ -783,8 +828,9 @@ def process_doc(
             }
         )
 
-    state["docs"][doc_id] = {
+    state["docs"][state_key] = {
         "doc_id": doc_id,
+        "source_provider": "quickreads",
         "title": title,
         "queue_tag": queue_tag,
         "source_url": source_url,
@@ -855,21 +901,12 @@ def main() -> None:
     state = load_state()
     session = requests.Session()
 
-    fetched_docs: Dict[str, Dict[str, Any]] = {}
-    fetched_tags_by_doc: Dict[str, Set[str]] = {}
-
-    for queue_tag in TAG_CONFIG.keys():
-        docs = fetch_docs_by_tag(session, queue_tag)
-        print(f"Fetched docs for tag '{queue_tag}': {len(docs)}")
-        for doc in docs:
-            doc_id = str(doc.get("id"))
-            if not doc_id:
-                continue
-            fetched_docs[doc_id] = doc
-            fetched_tags_by_doc.setdefault(doc_id, set()).add(queue_tag)
-
-    doc_ids = list(fetched_docs.keys())
-    print(f"Unique docs fetched across queue tags: {len(doc_ids)}")
+    article_summaries = fetch_article_summaries(session)
+    queued_summaries = [
+        article for article in article_summaries if extract_doc_tags(article) & set(TAG_CONFIG)
+    ]
+    print(f"Fetched unarchived Quick Reads articles: {len(article_summaries)}")
+    print(f"Articles matching queue tags: {len(queued_summaries)}")
 
     summary = {
         "processed_docs": 0,
@@ -882,39 +919,40 @@ def main() -> None:
     }
 
     processed_counter = 0
-    for doc_id in doc_ids:
+    for summary_doc in queued_summaries:
         if processed_counter >= MAX_DOCS_PER_RUN:
-            print(f"Reached MAX_DOCS_PER_RUN={MAX_DOCS_PER_RUN}; remaining docs deferred")
+            print(f"Reached MAX_DOCS_PER_RUN={MAX_DOCS_PER_RUN}; remaining articles deferred")
             break
 
-        doc = fetched_docs[doc_id]
-        queue_tag = choose_queue_tag(doc, fetched_tags_by_doc.get(doc_id, set()))
+        doc_id = str(summary_doc["id"])
+        queue_tag = choose_queue_tag(summary_doc)
         if queue_tag is None:
             print(
-                f"Skipping doc {doc_id}: ambiguous queue tags "
-                f"{sorted(extract_doc_tags(doc) | fetched_tags_by_doc.get(doc_id, set()))}"
+                f"Skipping article {doc_id}: ambiguous queue tags "
+                f"{sorted(extract_doc_tags(summary_doc))}"
             )
             summary["ambiguous"] += 1
             continue
 
         try:
-            print(f"Processing doc {doc_id} with queue tag '{queue_tag}'")
+            doc = fetch_article(session, summary_doc)
+            print(f"Processing article {doc_id} with queue tag '{queue_tag}'")
             status, part_count = process_doc(session, doc, queue_tag, state)
             if status == "processed":
-                print(f"Processed doc {doc_id}: created {part_count} part(s)")
+                print(f"Processed article {doc_id}: created {part_count} part(s)")
                 summary["processed_docs"] += 1
                 summary["processed_parts"] += part_count
                 processed_counter += 1
             elif status == "unchanged":
-                print(f"Skipped unchanged doc {doc_id}")
+                print(f"Skipped unchanged article {doc_id}")
                 summary["unchanged"] += 1
             elif status == "too_short":
-                print(f"Skipped too-short doc {doc_id}")
+                print(f"Skipped too-short article {doc_id}")
                 summary["too_short"] += 1
         except Exception as exc:
             summary["failed"] += 1
             summary["failed_doc_ids"].append(doc_id)
-            print(f"Failed for doc {doc_id}: {describe_request_exception(exc)}")
+            print(f"Failed for article {doc_id}: {describe_request_exception(exc)}")
 
     pruned_by_retention = enforce_retention(state, RETAIN_MAX_ITEMS)
     removed_orphans = remove_orphan_audio_files(state)
@@ -924,16 +962,16 @@ def main() -> None:
     save_state(state)
 
     print("Run summary")
-    print(f"  processed docs: {summary['processed_docs']}")
+    print(f"  processed articles: {summary['processed_docs']}")
     print(f"  processed parts: {summary['processed_parts']}")
-    print(f"  unchanged docs: {summary['unchanged']}")
-    print(f"  ambiguous docs skipped: {summary['ambiguous']}")
-    print(f"  too-short docs skipped: {summary['too_short']}")
-    print(f"  failed docs: {summary['failed']}")
+    print(f"  unchanged articles: {summary['unchanged']}")
+    print(f"  ambiguous articles skipped: {summary['ambiguous']}")
+    print(f"  too-short articles skipped: {summary['too_short']}")
+    print(f"  failed articles: {summary['failed']}")
     print(f"  retention-pruned files: {pruned_by_retention}")
     print(f"  orphan files removed: {removed_orphans}")
     if summary["failed_doc_ids"]:
-        print("  failed doc ids: " + ", ".join(summary["failed_doc_ids"]))
+        print("  failed article ids: " + ", ".join(summary["failed_doc_ids"]))
 
 
 if __name__ == "__main__":
