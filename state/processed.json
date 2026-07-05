@@ -600,6 +600,81 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "quickreads:d73fec00-e5bd-416c-8a49-5de2bccd0132": {
+      "doc_id": "d73fec00-e5bd-416c-8a49-5de2bccd0132",
+      "source_provider": "quickreads",
+      "title": "Matthew 11.16-19,25-30",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Matthew%2011.16-19,25-30/604F05D1-FC5A-4B96-8F51-8B202E207109",
+      "fingerprint": "7d0b9744c133d5cfaa02bf4127871285e87b76d8",
+      "processed_at": "2026-07-05T19:41:24Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "d73fec00-e5bd-416c-8a49-5de2bccd0132",
+          "part": 1,
+          "title": "Matthew 11.16-19,25-30",
+          "description": "https://prayers.app/lectionary/Matthew%2011.16-19,25-30/604F05D1-FC5A-4B96-8F51-8B202E207109",
+          "guid": "quickreads-d73fec00-e5bd-416c-8a49-5de2bccd0132-7d0b9744",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_docd73fec00-e5bd-416c-8a49-5de2bccd0132_7d0b9744_matthew-1116-1925-30.mp3",
+          "length": 273984,
+          "filename": "20260705_quickreads_docd73fec00-e5bd-416c-8a49-5de2bccd0132_7d0b9744_matthew-1116-1925-30.mp3",
+          "processed_at": "2026-07-05T19:41:24Z",
+          "source_url": "https://prayers.app/lectionary/Matthew%2011.16-19,25-30/604F05D1-FC5A-4B96-8F51-8B202E207109",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:34f94f45-ab2a-4aec-9f1d-4073250355f8": {
+      "doc_id": "34f94f45-ab2a-4aec-9f1d-4073250355f8",
+      "source_provider": "quickreads",
+      "title": "Romans 7.15-25a",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Romans%207.15-25a/8CD32E32-E9DC-40FB-A451-CB1956FF7F33",
+      "fingerprint": "087718753dcbd9ad81d3980cca2c6c7c72e319e4",
+      "processed_at": "2026-07-05T19:41:34Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "34f94f45-ab2a-4aec-9f1d-4073250355f8",
+          "part": 1,
+          "title": "Romans 7.15-25a",
+          "description": "https://prayers.app/lectionary/Romans%207.15-25a/8CD32E32-E9DC-40FB-A451-CB1956FF7F33",
+          "guid": "quickreads-34f94f45-ab2a-4aec-9f1d-4073250355f8-08771875",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_doc34f94f45-ab2a-4aec-9f1d-4073250355f8_08771875_romans-715-25a.mp3",
+          "length": 244992,
+          "filename": "20260705_quickreads_doc34f94f45-ab2a-4aec-9f1d-4073250355f8_08771875_romans-715-25a.mp3",
+          "processed_at": "2026-07-05T19:41:34Z",
+          "source_url": "https://prayers.app/lectionary/Romans%207.15-25a/8CD32E32-E9DC-40FB-A451-CB1956FF7F33",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:af96a935-b55e-4f08-8268-b49ad88c4fa5": {
+      "doc_id": "af96a935-b55e-4f08-8268-b49ad88c4fa5",
+      "source_provider": "quickreads",
+      "title": "Zechariah 9.9-12",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Zechariah%209.9-12/FC9E6C94-05A7-4640-B46B-A3A613E141C8",
+      "fingerprint": "08753d2097358d23ccc87d1b962bd1beaab67f3f",
+      "processed_at": "2026-07-05T19:41:44Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "af96a935-b55e-4f08-8268-b49ad88c4fa5",
+          "part": 1,
+          "title": "Zechariah 9.9-12",
+          "description": "https://prayers.app/lectionary/Zechariah%209.9-12/FC9E6C94-05A7-4640-B46B-A3A613E141C8",
+          "guid": "quickreads-af96a935-b55e-4f08-8268-b49ad88c4fa5-08753d20",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_docaf96a935-b55e-4f08-8268-b49ad88c4fa5_08753d20_zechariah-99-12.mp3",
+          "length": 162624,
+          "filename": "20260705_quickreads_docaf96a935-b55e-4f08-8268-b49ad88c4fa5_08753d20_zechariah-99-12.mp3",
+          "processed_at": "2026-07-05T19:41:44Z",
+          "source_url": "https://prayers.app/lectionary/Zechariah%209.9-12/FC9E6C94-05A7-4640-B46B-A3A613E141C8",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }

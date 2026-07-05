@@ -5,12 +5,39 @@
     <link>https://tomtom800.github.io/Text-to-Speech/</link>
     <description>Personal TTS feed generated from Quick Reads tags.</description>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 05 Jul 2026 18:27:01 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 19:41:50 GMT</lastBuildDate>
     <atom:link href="https://tomtom800.github.io/Text-to-Speech/podcast.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Tom Selmes</itunes:author>
     <itunes:summary>Personal TTS feed generated from Quick Reads tags.</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:image href="https://tomtom800.github.io/Text-to-Speech/image.png" />
+    <item>
+      <title>Zechariah 9.9-12</title>
+      <description>https://prayers.app/lectionary/Zechariah%209.9-12/FC9E6C94-05A7-4640-B46B-A3A613E141C8</description>
+      <guid>quickreads-af96a935-b55e-4f08-8268-b49ad88c4fa5-08753d20</guid>
+      <pubDate>Sun, 05 Jul 2026 19:41:44 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_docaf96a935-b55e-4f08-8268-b49ad88c4fa5_08753d20_zechariah-99-12.mp3" length="162624" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Romans 7.15-25a</title>
+      <description>https://prayers.app/lectionary/Romans%207.15-25a/8CD32E32-E9DC-40FB-A451-CB1956FF7F33</description>
+      <guid>quickreads-34f94f45-ab2a-4aec-9f1d-4073250355f8-08771875</guid>
+      <pubDate>Sun, 05 Jul 2026 19:41:34 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_doc34f94f45-ab2a-4aec-9f1d-4073250355f8_08771875_romans-715-25a.mp3" length="244992" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Matthew 11.16-19,25-30</title>
+      <description>https://prayers.app/lectionary/Matthew%2011.16-19,25-30/604F05D1-FC5A-4B96-8F51-8B202E207109</description>
+      <guid>quickreads-d73fec00-e5bd-416c-8a49-5de2bccd0132-7d0b9744</guid>
+      <pubDate>Sun, 05 Jul 2026 19:41:24 GMT</pubDate>
+      <enclosure url="https://tomtom800.github.io/Text-to-Speech/audio/20260705_quickreads_docd73fec00-e5bd-416c-8a49-5de2bccd0132_7d0b9744_matthew-1116-1925-30.mp3" length="273984" type="audio/mpeg" />
+      <itunes:author>Tom Selmes</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>‘Act on the evidence outside the window’: Andy Burnham urged to stick to net zero targets if he becomes PM</title>
       <description>https://www.theguardian.com/environment/2026/jun/25/andy-burnham-net-zero-targets</description>
