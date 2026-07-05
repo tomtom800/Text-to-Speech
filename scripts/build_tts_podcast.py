@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import base64
 import datetime as dt
 import hashlib
@@ -584,6 +585,79 @@ def fetch_article(session: requests.Session, summary: Dict[str, Any]) -> Dict[st
     return article
 
 
+def archive_article(session: requests.Session, article_id: str) -> None:
+    response = request_with_retry(
+        session=session,
+        method="POST",
+        url=f"{QUICK_READS_API_URL}/articles/{article_id}/archive",
+        headers=quick_reads_headers(),
+        params={},
+        timeout=60,
+        attempts=QUICK_READS_RETRY_ATTEMPTS,
+    )
+    response.raise_for_status()
+
+    try:
+        data = response.json()
+    except ValueError as exc:
+        raise RuntimeError(
+            f"Quick Reads returned an invalid archive response for {article_id}"
+        ) from exc
+
+    if not isinstance(data, dict) or data.get("success") is not True:
+        raise RuntimeError(f"Quick Reads failed to archive article {article_id}: {data}")
+
+
+def write_archive_manifest(path: pathlib.Path, article_ids: List[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path = path.with_name(path.name + ".tmp")
+    safe_unlink(temporary_path)
+    temporary_path.write_text(
+        json.dumps({"version": 1, "article_ids": article_ids}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    temporary_path.replace(path)
+
+
+def load_archive_manifest(path: pathlib.Path) -> List[str]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Unable to read archive manifest {path}: {exc}") from exc
+
+    if not isinstance(data, dict) or data.get("version") != 1:
+        raise RuntimeError(f"Invalid archive manifest {path}: expected version 1")
+
+    article_ids = data.get("article_ids")
+    if not isinstance(article_ids, list) or not all(
+        isinstance(article_id, str) and article_id for article_id in article_ids
+    ):
+        raise RuntimeError(f"Invalid archive manifest {path}: article_ids must be strings")
+
+    return list(dict.fromkeys(article_ids))
+
+
+def archive_from_manifest(path: pathlib.Path) -> None:
+    article_ids = load_archive_manifest(path)
+    session = requests.Session()
+    failed_ids: List[str] = []
+
+    for article_id in article_ids:
+        try:
+            archive_article(session, article_id)
+            print(f"Archived Quick Reads article {article_id}")
+        except Exception as exc:
+            failed_ids.append(article_id)
+            print(
+                f"Failed to archive Quick Reads article {article_id}: "
+                f"{describe_request_exception(exc)}"
+            )
+
+    print(f"Archived Quick Reads articles: {len(article_ids) - len(failed_ids)}")
+    if failed_ids:
+        raise RuntimeError("Failed to archive article ids: " + ", ".join(failed_ids))
+
+
 # ==========
 # Feed
 # ==========
@@ -896,7 +970,10 @@ def remove_orphan_audio_files(state: Dict[str, Any]) -> int:
 
 
 
-def main() -> None:
+def main(archive_manifest_path: Optional[pathlib.Path] = None) -> None:
+    if archive_manifest_path is not None:
+        safe_unlink(archive_manifest_path)
+
     ensure_dirs()
     state = load_state()
     session = requests.Session()
@@ -919,6 +996,7 @@ def main() -> None:
     }
 
     processed_counter = 0
+    archive_article_ids: List[str] = []
     for summary_doc in queued_summaries:
         if processed_counter >= MAX_DOCS_PER_RUN:
             print(f"Reached MAX_DOCS_PER_RUN={MAX_DOCS_PER_RUN}; remaining articles deferred")
@@ -943,9 +1021,11 @@ def main() -> None:
                 summary["processed_docs"] += 1
                 summary["processed_parts"] += part_count
                 processed_counter += 1
+                archive_article_ids.append(doc_id)
             elif status == "unchanged":
                 print(f"Skipped unchanged article {doc_id}")
                 summary["unchanged"] += 1
+                archive_article_ids.append(doc_id)
             elif status == "too_short":
                 print(f"Skipped too-short article {doc_id}")
                 summary["too_short"] += 1
@@ -960,6 +1040,8 @@ def main() -> None:
     items = collect_feed_items_from_state(state)
     build_feed(items)
     save_state(state)
+    if archive_manifest_path is not None:
+        write_archive_manifest(archive_manifest_path, archive_article_ids)
 
     print("Run summary")
     print(f"  processed articles: {summary['processed_docs']}")
@@ -974,5 +1056,27 @@ def main() -> None:
         print("  failed article ids: " + ", ".join(summary["failed_doc_ids"]))
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Build and publish the TTS podcast feed")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
+        "--write-archive-manifest",
+        type=pathlib.Path,
+        metavar="PATH",
+        help="write successfully processed Quick Reads article IDs to PATH",
+    )
+    mode.add_argument(
+        "--archive-from-manifest",
+        type=pathlib.Path,
+        metavar="PATH",
+        help="archive the Quick Reads article IDs stored in PATH",
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    main()
+    args = parse_args()
+    if args.archive_from_manifest is not None:
+        archive_from_manifest(args.archive_from_manifest)
+    else:
+        main(args.write_archive_manifest)

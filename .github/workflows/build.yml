@@ -50,7 +50,8 @@ jobs:
           RETAIN_MAX_ITEMS: "200"
           MAX_DOCS_PER_RUN: "25"
         run: |
-          python scripts/build_tts_podcast.py
+          python scripts/build_tts_podcast.py \
+            --write-archive-manifest "$RUNNER_TEMP/quickreads-archive.json"
 
       - name: Commit changes
         id: commit
@@ -78,3 +79,11 @@ jobs:
 
           echo "Push failed after retries"
           exit 1
+
+      - name: Archive processed Quick Reads articles
+        env:
+          QUICK_READS_API_KEY: ${{ secrets.QUICK_READS_API_KEY }}
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+        run: |
+          python scripts/build_tts_podcast.py \
+            --archive-from-manifest "$RUNNER_TEMP/quickreads-archive.json"

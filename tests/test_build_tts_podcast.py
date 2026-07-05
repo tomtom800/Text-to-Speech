@@ -17,13 +17,16 @@ SPEC.loader.exec_module(tts)
 
 
 class FakeResponse:
-    def __init__(self, data, status_code=200):
+    def __init__(self, data, status_code=200, json_error=None):
         self._data = data
+        self._json_error = json_error
         self.status_code = status_code
         self.reason = "OK"
         self.text = ""
 
     def json(self):
+        if self._json_error is not None:
+            raise self._json_error
         return self._data
 
     def raise_for_status(self):
@@ -91,6 +94,90 @@ class QuickReadsApiTests(unittest.TestCase):
                 FakeSession([FakeResponse({"id": "wrong"})]),
                 {"id": "expected", "tags": []},
             )
+
+    def test_archive_article_uses_documented_endpoint_and_response(self):
+        session = FakeSession([FakeResponse({"success": True})])
+
+        tts.archive_article(session, "article-1")
+
+        self.assertEqual(len(session.calls), 1)
+        call = session.calls[0]
+        self.assertEqual(call["method"], "POST")
+        self.assertEqual(
+            call["url"], "https://quickreads.app/api/articles/article-1/archive"
+        )
+        self.assertEqual(call["headers"], {"Authorization": "Bearer test-key"})
+        self.assertEqual(call["params"], {})
+        self.assertNotIn("json", call)
+        self.assertNotIn("data", call)
+
+    def test_archive_article_rejects_malformed_or_unsuccessful_responses(self):
+        for response in (
+            FakeResponse(None, json_error=ValueError("invalid JSON")),
+            FakeResponse({"success": False}),
+            FakeResponse([{"success": True}]),
+        ):
+            with self.subTest(response=response._data):
+                with self.assertRaises(RuntimeError):
+                    tts.archive_article(FakeSession([response]), "article-1")
+
+
+class ArchiveManifestTests(unittest.TestCase):
+    def test_archive_manifest_deduplicates_ids_and_archives_each_article(self):
+        session = FakeSession(
+            [FakeResponse({"success": True}), FakeResponse({"success": True})]
+        )
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            manifest_path.write_text(
+                '{"version": 1, "article_ids": ["a", "a", "b"]}',
+                encoding="utf-8",
+            )
+            with mock.patch.object(tts.requests, "Session", return_value=session):
+                tts.archive_from_manifest(manifest_path)
+
+        self.assertEqual(
+            [call["url"] for call in session.calls],
+            [
+                "https://quickreads.app/api/articles/a/archive",
+                "https://quickreads.app/api/articles/b/archive",
+            ],
+        )
+
+    def test_empty_archive_manifest_is_a_no_op(self):
+        session = FakeSession([])
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            tts.write_archive_manifest(manifest_path, [])
+            with mock.patch.object(tts.requests, "Session", return_value=session):
+                tts.archive_from_manifest(manifest_path)
+
+        self.assertEqual(session.calls, [])
+
+    def test_archive_manifest_attempts_all_ids_then_reports_failures(self):
+        session = FakeSession(
+            [FakeResponse({"success": False}), FakeResponse({"success": True})]
+        )
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            tts.write_archive_manifest(manifest_path, ["bad", "good"])
+            with mock.patch.object(tts.requests, "Session", return_value=session):
+                with self.assertRaisesRegex(RuntimeError, "bad"):
+                    tts.archive_from_manifest(manifest_path)
+
+        self.assertEqual(len(session.calls), 2)
+
+    def test_invalid_archive_manifest_fails_clearly(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            manifest_path.write_text(
+                '{"version": 1, "article_ids": [1]}', encoding="utf-8"
+            )
+            with self.assertRaisesRegex(RuntimeError, "article_ids must be strings"):
+                tts.load_archive_manifest(manifest_path)
 
 
 class StateMigrationTests(unittest.TestCase):
@@ -199,6 +286,68 @@ class ProcessingTests(unittest.TestCase):
         self.assertIn("Failed for article bad: detail failed", output)
         self.assertIn("Skipped too-short article empty", output)
         self.assertIn("failed articles: 1", output)
+
+    def test_main_writes_only_processed_and_unchanged_articles_to_manifest(self):
+        summaries = [
+            {"id": "processed", "tags": [{"name": "tts-en"}]},
+            {"id": "unchanged", "tags": [{"name": "tts-en"}]},
+            {"id": "short", "tags": [{"name": "tts-en"}]},
+            {"id": "failed", "tags": [{"name": "tts-en"}]},
+            {
+                "id": "ambiguous",
+                "tags": [{"name": "tts-en"}, {"name": "tts-de"}],
+            },
+        ]
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            with mock.patch.object(tts, "ensure_dirs"), mock.patch.object(
+                tts, "load_state", return_value=tts.empty_state()
+            ), mock.patch.object(
+                tts, "fetch_article_summaries", return_value=summaries
+            ), mock.patch.object(
+                tts, "fetch_article", side_effect=lambda _session, summary: summary
+            ), mock.patch.object(
+                tts,
+                "process_doc",
+                side_effect=[
+                    ("processed", 1),
+                    ("unchanged", 0),
+                    ("too_short", 0),
+                    RuntimeError("processing failed"),
+                ],
+            ), mock.patch.object(
+                tts, "enforce_retention", return_value=0
+            ), mock.patch.object(
+                tts, "remove_orphan_audio_files", return_value=0
+            ), mock.patch.object(tts, "build_feed"), mock.patch.object(
+                tts, "save_state"
+            ):
+                tts.main(manifest_path)
+
+            self.assertEqual(
+                tts.load_archive_manifest(manifest_path), ["processed", "unchanged"]
+            )
+
+    def test_main_does_not_leave_manifest_when_feed_generation_fails(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manifest_path = pathlib.Path(temp_dir) / "archive.json"
+            manifest_path.write_text("stale", encoding="utf-8")
+            with mock.patch.object(tts, "ensure_dirs"), mock.patch.object(
+                tts, "load_state", return_value=tts.empty_state()
+            ), mock.patch.object(
+                tts, "fetch_article_summaries", return_value=[]
+            ), mock.patch.object(
+                tts, "enforce_retention", return_value=0
+            ), mock.patch.object(
+                tts, "remove_orphan_audio_files", return_value=0
+            ), mock.patch.object(
+                tts, "build_feed", side_effect=RuntimeError("feed failed")
+            ), mock.patch.object(tts, "save_state"):
+                with self.assertRaisesRegex(RuntimeError, "feed failed"):
+                    tts.main(manifest_path)
+
+            self.assertFalse(manifest_path.exists())
 
 
 if __name__ == "__main__":
