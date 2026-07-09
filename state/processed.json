@@ -675,6 +675,156 @@
           "queue_tag": "tts-en"
         }
       ]
+    },
+    "quickreads:50203a68-2795-45cb-af5c-993f5d8d992c": {
+      "doc_id": "50203a68-2795-45cb-af5c-993f5d8d992c",
+      "source_provider": "quickreads",
+      "title": "Psalm 65.1-7,8-13",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Psalm%2065.1-7,8-13/F57856A6-0423-4A7F-BD8C-612047929113",
+      "fingerprint": "4055657eae47f7132570bcdaac4de5e327d8252e",
+      "processed_at": "2026-07-09T08:01:25Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "50203a68-2795-45cb-af5c-993f5d8d992c",
+          "part": 1,
+          "title": "Psalm 65.1-7,8-13",
+          "description": "https://prayers.app/lectionary/Psalm%2065.1-7,8-13/F57856A6-0423-4A7F-BD8C-612047929113",
+          "guid": "quickreads-50203a68-2795-45cb-af5c-993f5d8d992c-4055657e",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_doc50203a68-2795-45cb-af5c-993f5d8d992c_4055657e_psalm-651-78-13.mp3",
+          "length": 315456,
+          "filename": "20260709_quickreads_doc50203a68-2795-45cb-af5c-993f5d8d992c_4055657e_psalm-651-78-13.mp3",
+          "processed_at": "2026-07-09T08:01:25Z",
+          "source_url": "https://prayers.app/lectionary/Psalm%2065.1-7,8-13/F57856A6-0423-4A7F-BD8C-612047929113",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:4e342c36-9089-47eb-98d1-7972985ebc96": {
+      "doc_id": "4e342c36-9089-47eb-98d1-7972985ebc96",
+      "source_provider": "quickreads",
+      "title": "Psalm 119.105-112",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Psalm%20119.105-112/0DE9EB82-F968-4C10-A9B9-4EF94A5F3677",
+      "fingerprint": "8461cfd4bf1000db521ec075b1f1409c9d5a31d6",
+      "processed_at": "2026-07-09T08:01:37Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "4e342c36-9089-47eb-98d1-7972985ebc96",
+          "part": 1,
+          "title": "Psalm 119.105-112",
+          "description": "https://prayers.app/lectionary/Psalm%20119.105-112/0DE9EB82-F968-4C10-A9B9-4EF94A5F3677",
+          "guid": "quickreads-4e342c36-9089-47eb-98d1-7972985ebc96-8461cfd4",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_doc4e342c36-9089-47eb-98d1-7972985ebc96_8461cfd4_psalm-119105-112.mp3",
+          "length": 160224,
+          "filename": "20260709_quickreads_doc4e342c36-9089-47eb-98d1-7972985ebc96_8461cfd4_psalm-119105-112.mp3",
+          "processed_at": "2026-07-09T08:01:37Z",
+          "source_url": "https://prayers.app/lectionary/Psalm%20119.105-112/0DE9EB82-F968-4C10-A9B9-4EF94A5F3677",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:dd537d11-4f77-4a65-8a32-381f29cc64c2": {
+      "doc_id": "dd537d11-4f77-4a65-8a32-381f29cc64c2",
+      "source_provider": "quickreads",
+      "title": "Isaiah 55.10-13",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Isaiah%2055.10-13/F5C8E035-BD85-4B51-A796-72AEE5829648",
+      "fingerprint": "d50f5712f3fc9fe46db069662c45382a82bd3037",
+      "processed_at": "2026-07-09T08:01:43Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "dd537d11-4f77-4a65-8a32-381f29cc64c2",
+          "part": 1,
+          "title": "Isaiah 55.10-13",
+          "description": "https://prayers.app/lectionary/Isaiah%2055.10-13/F5C8E035-BD85-4B51-A796-72AEE5829648",
+          "guid": "quickreads-dd537d11-4f77-4a65-8a32-381f29cc64c2-d50f5712",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_docdd537d11-4f77-4a65-8a32-381f29cc64c2_d50f5712_isaiah-5510-13.mp3",
+          "length": 162912,
+          "filename": "20260709_quickreads_docdd537d11-4f77-4a65-8a32-381f29cc64c2_d50f5712_isaiah-5510-13.mp3",
+          "processed_at": "2026-07-09T08:01:43Z",
+          "source_url": "https://prayers.app/lectionary/Isaiah%2055.10-13/F5C8E035-BD85-4B51-A796-72AEE5829648",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:1bf6fba0-6a0a-4496-b9a2-9d9504752259": {
+      "doc_id": "1bf6fba0-6a0a-4496-b9a2-9d9504752259",
+      "source_provider": "quickreads",
+      "title": "Matthew 13.1-9,18-23",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Matthew%2013.1-9,18-23/761EA588-9975-473A-82C2-BB95F713F3B9",
+      "fingerprint": "a004b659e40c0eb44baf29dad7cfb6f06d851a8b",
+      "processed_at": "2026-07-09T08:01:49Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "1bf6fba0-6a0a-4496-b9a2-9d9504752259",
+          "part": 1,
+          "title": "Matthew 13.1-9,18-23",
+          "description": "https://prayers.app/lectionary/Matthew%2013.1-9,18-23/761EA588-9975-473A-82C2-BB95F713F3B9",
+          "guid": "quickreads-1bf6fba0-6a0a-4496-b9a2-9d9504752259-a004b659",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_doc1bf6fba0-6a0a-4496-b9a2-9d9504752259_a004b659_matthew-131-918-23.mp3",
+          "length": 403296,
+          "filename": "20260709_quickreads_doc1bf6fba0-6a0a-4496-b9a2-9d9504752259_a004b659_matthew-131-918-23.mp3",
+          "processed_at": "2026-07-09T08:01:49Z",
+          "source_url": "https://prayers.app/lectionary/Matthew%2013.1-9,18-23/761EA588-9975-473A-82C2-BB95F713F3B9",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:127f9c9a-9952-474d-b0a2-7b5833767220": {
+      "doc_id": "127f9c9a-9952-474d-b0a2-7b5833767220",
+      "source_provider": "quickreads",
+      "title": "Romans 8.1-11",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Romans%208.1-11/067791F1-024C-4C93-BBC7-F8581DC189E6",
+      "fingerprint": "4d79b765869644f113fed9f734107cab97fae0fa",
+      "processed_at": "2026-07-09T08:02:05Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "127f9c9a-9952-474d-b0a2-7b5833767220",
+          "part": 1,
+          "title": "Romans 8.1-11",
+          "description": "https://prayers.app/lectionary/Romans%208.1-11/067791F1-024C-4C93-BBC7-F8581DC189E6",
+          "guid": "quickreads-127f9c9a-9952-474d-b0a2-7b5833767220-4d79b765",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_doc127f9c9a-9952-474d-b0a2-7b5833767220_4d79b765_romans-81-11.mp3",
+          "length": 342144,
+          "filename": "20260709_quickreads_doc127f9c9a-9952-474d-b0a2-7b5833767220_4d79b765_romans-81-11.mp3",
+          "processed_at": "2026-07-09T08:02:05Z",
+          "source_url": "https://prayers.app/lectionary/Romans%208.1-11/067791F1-024C-4C93-BBC7-F8581DC189E6",
+          "queue_tag": "tts-en"
+        }
+      ]
+    },
+    "quickreads:f1db86b1-c4a3-4fdb-b896-5b89d899f00d": {
+      "doc_id": "f1db86b1-c4a3-4fdb-b896-5b89d899f00d",
+      "source_provider": "quickreads",
+      "title": "Genesis 25.19-34",
+      "queue_tag": "tts-en",
+      "source_url": "https://prayers.app/lectionary/Genesis%2025.19-34/B6A50425-C663-4606-A44C-96E0509285D7",
+      "fingerprint": "1b71be15d152991ddeedbc7e006bccc5ecd6d9fc",
+      "processed_at": "2026-07-09T08:02:18Z",
+      "publish_mode": "combined",
+      "parts": [
+        {
+          "doc_id": "f1db86b1-c4a3-4fdb-b896-5b89d899f00d",
+          "part": 1,
+          "title": "Genesis 25.19-34",
+          "description": "https://prayers.app/lectionary/Genesis%2025.19-34/B6A50425-C663-4606-A44C-96E0509285D7",
+          "guid": "quickreads-f1db86b1-c4a3-4fdb-b896-5b89d899f00d-1b71be15",
+          "url": "https://tomtom800.github.io/Text-to-Speech/audio/20260709_quickreads_docf1db86b1-c4a3-4fdb-b896-5b89d899f00d_1b71be15_genesis-2519-34.mp3",
+          "length": 416256,
+          "filename": "20260709_quickreads_docf1db86b1-c4a3-4fdb-b896-5b89d899f00d_1b71be15_genesis-2519-34.mp3",
+          "processed_at": "2026-07-09T08:02:18Z",
+          "source_url": "https://prayers.app/lectionary/Genesis%2025.19-34/B6A50425-C663-4606-A44C-96E0509285D7",
+          "queue_tag": "tts-en"
+        }
+      ]
     }
   }
 }
